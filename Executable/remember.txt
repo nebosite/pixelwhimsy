@@ -1,0 +1,4 @@
+
+PAYPAL SANDBOX test accounts (developer.paypal.com)
+	buyer1@verizon.net  (buyer1pw) buyer1_1193401666_per@verizon.net
+	eric.jorg.seller1@verizon.net (seller1pw)  eric.j_1193401735_per@verizon.net

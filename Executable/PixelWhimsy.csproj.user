@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <PublishUrlHistory>C:\ftppublish\PixelWhimsy\</PublishUrlHistory>
+    <InstallUrlHistory>http://www.pixelwhimsy.com/installer/</InstallUrlHistory>
+    <SupportUrlHistory>http://www.pixelwhimsy.com</SupportUrlHistory>
+    <UpdateUrlHistory>http://www.pixelwhimsy.com/installer/</UpdateUrlHistory>
+    <BootstrapperUrlHistory>
+    </BootstrapperUrlHistory>
+    <ErrorReportUrlHistory>http://www.pixelwhimsy.com</ErrorReportUrlHistory>
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,115 @@
+Key					Action
+------------------  ------------------------------------
+Esc					Rest
+PrntScreen			Save to File 
+q					Quit
+w					Circle
+e					Rectangle
+a					FilledCircle
+s					FilledSquare
+d					SprayPaint
+f					PixelWhimsy
+lShift				Shift
+c					ColorPicker
+rShift				Shift
+lctrl				Ctrl
+lmenu				Alt
+rmenu				Alt
+rctrl				Ctrl			
+up					Increase Brush size
+down				Decrease Brush size
+1					Screen Decay
+2					Game of Life
+3					Fade to color
+4					Pixel Diffuser
+5					Color Diffuser
+6					ScreenFlow
+7					Rain
+8					ScreenSlide
+9					Ground Collapse
+Number Pad			Piano		
+i					XOR Square
+o					XOR Circle
+p					MiniPictures
+l					Life Patterns
+m					Line Target
+space				FireWorks
+Keypad /			Change Current Note Sound
+.					Freeze Animations (Ctrl-. = stop all animations)
+x					Set Working POints
+y					Gravity Rainbow
+F1					Help
+pgup				Flip virtically
+pgdwn				Flip Horizontally
+b					Bee
+/					Now
+Pageup				Flip Horizontal
+PageDown			Flip Vertical
+r					Plasma
+Scrllk				Show Version
+t					Tree
+
+backspace			Flatten animated colors
+u					ActiveSquare
+g					Active circle
+CapsLock			TilePainting
+'					Bomb
+F2					Circle Brush
+F3					Square Brush
+F4					LineTarget Brush	
+F5					Picture Brush
+F6					Spray Paint
+F7					Line Patter
+g					Circle Active Shape
+n					Spirograph
+z					Maze
+Enter				Text Entry
+Oem5 (/)			Show Keypress data
+Oem1  (;)			Firework2
+OemComma			Firework3
+left				New Random Color
+right				New Random Animated Color
+-					Snow
+F8					Flood fill brush
+F9					Shader Brush	
+H					Auto Brush
+J					Random Brush Size				
+Tab					Kaleidoscope
+
+V					Cheese
+~					ClearScrren
+LWin				xor circle
+aPPS				picture
+OemMinus			xor suare
+OemPlus				tree
+Oem6 (])			active suare
+OemOpenBrackets ([)	suare
+K					plasma
+Oemuestion			gravity rainbow
+End					circle
+w					circle
+e					shader
+r					scuare
+t					spraypaint 
+y					Life Paint 
+u					minipic 
+i					Line target
+o					Flood fill 
+p					working points
+
+--------------- UNASSIGNED -------------------------
+
+X
+Delete
+Oem5 (\)
+Home
+Decimal (Keypad)
+F10
+F11
+f12
+Pause
+numlock
+
+------------ Usable sounds 
+
+dot14

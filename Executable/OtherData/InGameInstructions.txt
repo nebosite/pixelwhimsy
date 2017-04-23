@@ -1,0 +1,73 @@
+U	Argyle Pattern
+H	Auto Brush
+B	Bee
+T	Bomb
+'	Brush Select: Bomb         
+Down	Brush Size Decrease
+Up	Brush Size Increase
+X	CheckerBoard
+V	Cheese
+End	Circle
+G	Circle (Crazy)
+A	Circle (Filled)
+Windows	Circle (XOR)
+~	Clear Screen
+NumLock	Color Counter
+5	Color Diffuser
+BackSpc	Color Freeze
+C	Color Picker
+W	Color Swap
+O	Edge Finder
+I	Emboss
+3	Fader (Ctrl-3 to fade to color)
+Space	Fireworks
+,	Fireworks   
+PageUp	Flip Horizontal
+PageDn	Flip Verticle
+.	Freeze Animations (Ctrl-. = clear animations)
+F2-12	Fun Keys
+2	Game Of Life
+P	Gradient
+?	Gravity Rainbow
+9	Ground Collapse
+F1	Help
+;	Increase Mode Number 
+Tab	Kaleidoscope Painting
+L	Life Pattern
+\	Line       
+Insert	Load (Also Ctrl-O)
+F	Logo
+Z	Maze
+Menu	Mini Picture
+M	Moire Pattern
+NumPad	Piano
+1	Pixel Decay
+4	Pixel Diffuser
+K	Plasma
+R	Polka Dots
+Q	Quit
+7	Rain
+Right	Random Animated Color
+J	Random Brush Size
+Home	Random Brushes
+Left	Random Color
+[	Rectangle
+]	Rectangle (Crazy)       
+S	Rectangle (Filled)
+-	Rectangle (XOR)
+/	Remember Piano Sound
+PrntScr	Save (Also Ctrl-S) Pictures are 
+	saved in MyPictures\PixelWhimsy
+6	Screen Flow
+8	Screen Slide
+0	Snow
+E	Spikes
+N	Spirograph
+D	Splatter
+Esc	Stop EveryThing
+Enter	Text Editor
+CapsLck	Tile Paint
++	Tree
+Scroll	Version Display
+Y	Wing Ding
+Delete	XOR the screen

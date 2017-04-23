@@ -1,0 +1,923 @@
+[ ] Update the version in the graphics
+[ ] Run it through the stress test
+[ ] Open the setup project
+    [ ] Update the version in the project settings
+    [ ] Update the version in the Assembly info for the exectuable
+    [ ] Build the realease version
+    [ ] Copy to Package directory
+    [ ] Copy the last zip file and replace the contents
+    [ ] Run Zip2SecureExe on the zip file
+    [ ] Test the exe, regular and demo versions
+[ ] Update the padgen file, upload to website   
+[ ] upload to website
+[ ] update web pages
+[ ] Verify website and that the download is right
+[ ] Current Version file
+
+TODO
+
+
+
+
+[ ] New feature: Undo/Redo (remember on keystroke and mouseup)
+[ ] Bug: Website does not come out right on Firefox
+[ ] New BUtton: checkerball
+[ ] New Button: Animation of a bunch of particles in a fountain motion
+[ ] New Button: Earthquake
+[ ] One more firework
+[ ] Competitor search terms
+	- Giggles computer funtime for baby
+	- kidpix
+	- Curious George Paint 
+	- Tux Paint
+	- Educational Freeware
+	- Minisebran, Sebran's ABC, 
+	- Paint dotnet
+	- Artrage
+	- kea coloring book
+
+[ ] Upload to sites
+	http://www.bluechillies.com
+	tucows
+	cnet (download.com)
+	http://jayisgames.com/536/gamesubmit.php
+	simtel.net
+[ ] Files to add to the site
+	[ ] default.asp (Do a redirect)
+	[ ] robots.txt (http://www.robotstxt.org/robotstxt.html)
+	[ ] domparking.php
+[ ] Get it reviewed by web sites and magazines (parenting, software, kids, etc)
+[ ] Talk it up on parenting forums
+[ ] Internet advertising
+[ ] Print up business cards 5000/$60 (http://gotprint.net/g/showStaticPage.do?page=frontpages/fp_business_card.html)
+[ ] Make a press release http://www.semicolon.com/ShareSuccess/SamplePR.html
+	- We emailed it to as many print magazines, e-zines, shareware and game site webmasters, columnists and journalists as we could gather addresses for 
+	- Increased traffic 10x
+	- That press release web site 
+[ ] Advertising idea:  Use ebay and seed your title with popular search terms
+[ ] Advertising:  Get pixelwhimsy onto delicious http://del.icio.us/search/?fr=del_icio_us&p=pixelwhimsy&type=all
+[ ] Leave a comment on http://www.siteadvisor.com/sites/pixelwhimsy.com/summary/
+[ ] Create Niftibits.com website
+[ ] Pay $65 to have tucows expedite your submission
+
+
+FOR THE NEXT VERSION
+
+
+
+[ ] Unmapped keys
+	Pause
+	Decimal
+[ ] User requested (x2): More Fireworks
+[ ] Wingdings brush
+[ ] Make splatters more splattery, thicker, or something
+[ ] Bug: Crashing on Schreoder's computer.
+[ ] Additional pixelwhimsy sounds
+[ ] Bug: More verbs
+[ ] Bug: Rain doesn't quite work right.  Some colors don't keep flowing
+[ ] Bug: possible sound problem with too many sounds  (make escape clear the sound queue)
+[ ] Sometimes the the toolbar buttons stop benig clickable (Cannot repro)
+[ ] Brush Size Slider
+[ ] Fast Perlin noise http://www.mandelbrot-dazibao.com/Perlin/Perlin2.htm
+[ ] Bug: Checkerboard doesn't center
+[ ] Come up witha way to detect new windows and shut them down
+[ ] Make a music video and put it on youtube
+[ ] Make a little demonstration video
+[ ] Bug: Need to intercept shutdown events
+	http://support.microsoft.com/kb/302092/
+[ ] Always use hkey local machine for settings
+[ ] Token play
+[ ] Make special keys at the top to certain things
+	[ ] Stop stops animation
+	[ ] Volume +/- changes master volume
+	[ ] Media track next.prev
+	[ ] playpause
+	[ ] SelectMedia
+	[ ] LaunchMail 
+	[ ] Browserhome
+	[ ] LaunchApplication2 brings up calc
+	[ ] VolumeMute	
+[ ] Bug: No recovery after hybernation
+[ ] Disable power and sleep buttons
+	[ ] Write a little code to write keystrokes to a file
+[ ] Jason: refine P behavior to draw the current brush picture
+[ ] Dillon: make the color picker bigger
+[ ] Jeremy idea: Macro recording
+[ ] Jeremy idea: share macros with others
+[ ] Enhance madlibs word list and sentence templates
+[ ] Limit activity
+[ ] Brush: Airbrush
+[ ] Tooltips
+[ ] load a random picture from mypics
+[ ] New feature: Hail - knocks out pixels
+[ ] Brush: Blur brush
+[ ] Brush: Highlighter (Paint and make things lighter)
+[ ] Brush: Jackson Pollock Painting	
+		Fast moving leaves a thin, wavy stream.  
+		Pay attention to momentum to see where the stream falls.  
+		Short little movements leave blots.
+[ ] Brush: Pixel pusher
+[ ] Emphasize registration benefits with a rich text box control
+[ ] Settings dialog
+[ ] Rgb Wanderers.   Wander around, adding red, green, or blue to the screen
+[ ] "Fire" that burns color into black and white
+[ ] Put the brush in a "flat" drawing mode
+	[ ] Change the signature of animate color to not take a ref.  Instead it returns the animated color.
+[ ] White canvas
+[ ] Show version info in help
+[ ] Prize
+[ ] Menu (menu key)
+[ ] Newtonian balls
+[ ] Earthquake
+[ ] Force balls
+[ ] Newtonian balls
+[ ] Spring string
+[ ] Rainbow color mode - while painting, the colors shift (Draw a rainbow animation when mouse is still)
+	[ ] Sweep rainbow
+	[ ] Sweep light->dark
+	[ ] Sweep dark->light
+	[ ] Sweep sinusoidal dark
+	[ ] Sweep sinusoidal light
+	[ ] Extend palette graphic to show special colors
+	[ ] Use an enum to define these special colors:
+		[ ] Ordinary rainbow
+		[ ] Random Rainbow
+		[ ] Fade current color -> black
+		[ ] Fade current color -> white
+	[ ] Modify color animator to look for the enum
+[ ] Grass
+[ ] Sky
+[ ] Sweep shapes
+
+
+
+FUNCTION IDEAS
+[ ] Change the palette when screen decary is on to something different and interesting
+[ ] Backgrounds
+[ ] Gravitation with supernova
+[ ] Ameoba
+[ ] Fractal growing bacteria colonies
+[ ] Lightning
+[ ] Tsunami- a wave rolls throough the scene
+[ ] Paint by number
+[ ] Draw by following
+[ ] Blobs
+	- Edge of the blob is a circular line of springs.  Blobs can be pulled apart and merged
+	- Gravity – blobs can orbit each other
+[ ] AscII art
+[ ] RGB Ants - ants leave trails of different colors, eat food of certain colors
+[ ] load a random song
+[/] Generate random sound effects
+[ ] sound effect drawing
+[ ] Record over sound effect
+[ ] Save settings for next time
+[ ] Restore defaults
+[ ] Paintbrush
+[ ] Wasps
+[ ] ants (find and eat)
+[ ] cockroaches (scurry)
+[ ] FFT posts
+[ ] Amplitude posts
+[ ] Bulge
+[ ] pinch
+[ ] Spatter paint
+[ ] splat
+[ ] Different games generate value, which turns on other features
+	[ ] Show the value as stacks of quarters, nickels, dimes, and pennies
+[ ] Memory game.  Harder versions have the pieces moving around
+[ ] Dog catcher.  must lasso moving things
+[ ] sound painter
+	[ ] Amplitude space
+	[ ] Frequency space (use reverse FFT to create wave files. )
+[ ] Drum machine widget
+[ ] Bombs randomly appear and you have to lasso them or they explode
+[ ] More fireworks 
+	[ ] Imagine a ball that shoots sparks, rotating as it goes up
+	[ ] One of those big shower of sparks ones
+	[ ] Boom... crackle
+	[ ] Sky M-80
+	[ ] Boom scream
+	[ ] Ground fountain
+[ ] Log time played, show parents the logs, let parents configure time to play
+[ ] MP3 player  http://www.codeproject.com/audio/dshowencoder.asp
+	
+
+BACKBURNER
+[ ] Sample playback
+	[ ] Sample creation?
+	[ ] Sample import?
+	[ ] Attack, decay, repeat loop, natural frequency, vibrato-capable
+	[ ] Auto sample generation from an input wav - look for repeating peaks
+
+
+DONE
+
+##### Version 1.3.0
+[x] Get XNA audio working
+[x] Get the mouse working
+[x] Does Screensaver work? Yes
+[x] Defautl off of kidsafe
+[x] Does kidsafe work? Yes
+
+
+##### Version 1.2.0
+[x] Check in current code
+[x] Fix Palette loss
+[x] Move to 30 day expiration
+[x] New Button: w Color Swap r->g->b->r
+[x] New BUtton: e Spikes around the edges
+[x] New Button: r Polka Dotz  (plays a little polka music)
+[x] New BUtton: t BoMb (User requested)
+[x] New Button: y Wing Dinger
+[x] New Button: u Dot/wall bouncer/argyle
+[x] New Button: i Emboss
+[x] New Button: o FindEdges
+[x] New Button: p Gradient Fill
+[x] Sounds
+[x] Make sure the version checker is working
+[x] Fix the F1 Help
+[x] Make it load faster
+[x] Map "VolumeMute" to volume on/off
+
+[x] Change square brush to windmill brush
+[x] Bug: Modifier panel needs to move with resize
+[x] paint every frame if the mouse button is down
+
+
+
+##### Version 1.1.0
+[x] Fix broken graphics issues
+[x] add more pixels to fireworks
+[x] New FIrework: Spinner
+[x] New firework: Planar blast
+[x] Add Modulator window
+[x] Move modulation to a single key as well as 0-9 keypad keys
+[x] Smooth colors in the screen decay
+[x] click draws current text as a brush
+[x] Fix the help
+
+
+##### Version 1.0.8
+
+[x] Bug: Excape should clear the keyboard array
+[x] Bug: 1280x1024 broken
+[x] Right click should clear working points
+[x] Quality setting is ignored for windowed mode.
+[x] regularize resolutions
+[x] Tree render problem:
+		at System.Drawing.Color.FromArgb(Int32 red, Int32 green, Int32 blue)
+		at PixelWhimsy.Animation.Tree.TreeBranch.Grow(DVWindow dvWindow, List`1 buds)
+[x] Only email the exception if the application is going to die
+[x] Ignore DDERR_WRONGMODE 
+		at Microsoft.DirectX.DirectDraw.Surface.Restore()
+		at DirectVarmint.DVWindow.Flip()
+		at DirectVarmint.DVWindow.Render()
+		at DirectVarmint.DVTools.DriveApplication(Int32 framesPerSecond)
+[x] Make sure the install installs directVarmint
+
+
+##### Version 1.0.5
+
+[x] Stress Test/Beta release
+	[x] Ask for easter egg pics
+	[x] Ask for feedback to get the registration code
+[x] PixelWhimsy - Make the version checks unique by version
+[x] bug: focus not automatically set on start
+[x] in kid safe, should always grab keyboard
+[x] PixelWhimy - turn off debug safety
+[x] Turn off topmost if windowed and not kid safe
+[x] Map the volume up/down and volume mute keys
+	VolumeMute, VolumeUp, VolumeDown
+[x] Bug: When tile drawing, allow some tween frames with the is too much drawing going on
+[x] Move mouse commands into the protected frame loop
+[x] Start coding a new web template
+[x] Turn off expiration code	
+[x] Bug: Why do I get three emails from one error?
+WEB CHANGES
+[x] Change the main page to be more of an introduction
+[x] Quote Jeremy: - I just launched PixelWhimsy and wish you were nearby so I could buy you lunch.  It's wonderful, Eric, and I can't wait for my 18-month old to wake up in the morning to see his expression when he starts pounding on the keyboard.
+	James woke up late last night, unhappy due to teething, and flipped out over the program.  It took his mind right off his discomfort. 
+	We have the JumpStart Toddlers program: great for exposure to numbers/letters/etc., but yours rocks for creativity and intrigue.
+[x] Quote David:  THANK YOU THANK YOU..and again THANK YOU. <a href=""> Havar Inc.</a> serves people who have developmental disabilities. We are using this program and projecting it on the wall. All kinds of cause and effect learning going on and entertainment too.
+[x] Upload dana's new picture
+[x] 1&1 commission link: http://www.1and1.com/?k_id=15323116
+[x] Anti-porn link
+[x] Convert site to normal non-asp
+	[x] Mailer
+	[x] RegHandler
+	[x] Merchant
+[x] Fix it to work with Firefox
+[x] Release
+[x] Stress testing
+[x] FInal release!
+	[x] New Logo
+		[x] Update all the images
+			[x] In-Program Logo in the upper left
+			[x] Startup logo
+			[x] Install logo
+			[x] Image on the registration site
+			[x] Screensaver preview logo
+		[x] Store the logo font inside the exe
+	[x] Make it minimizable in windowed mode
+	[x] Add the icon to the Slate
+	[x] Update store look and feel
+		[x] The font is wrong
+		[x] Figure out the links for the three variations
+			http://usd.swreg.org/cgi-bin/s.cgi?s=48444&p=48444PixelWhimsy1&v=0&d=0&q=1&clr
+			http://usd.swreg.org/cgi-bin/s.cgi?s=48444&p=48444PixelWhimsy1&v=1&d=0&q=1&clr
+			http://usd.swreg.org/cgi-bin/s.cgi?s=48444&p=48444PixelWhimsy1&v=2&d=0&q=1&clr
+		[x] Change the template on the main web site to have the new css tags
+	[x] Update the file size on SWReg
+	[x] Update the appearance on SWReg 
+	[x] Add purchase link to web site
+	[x] Walk through a regular registration process
+	[x] Create 1.0 install from release version
+		[x] Install on the boy's computer
+	[x] Upload new version
+	[x] Update the download page/picture
+	[x] Polish the press release
+	[x] Update Current Version file
+	[x] Send notification to enthusiasts
+	[x] Submit press release
+	[x] Branch the code
+Free Licenses to
+	[x] Asim Jalis [asimjalis@gmail.com]
+	[x] Abbe Cohen Dvornik [abbe.cohen.dvornik@gmail.com]
+	[x] Kevin C
+	[x] Rob Hutchinson
+	[x] Jason Dunham [jdunham@sfis.com] 
+	[x] Dana
+	[x] Dillon
+	[x] jeremy [jeremyjava@yahoo.com]
+	[x] Francois Burianek [Francois.Burianek@microsoft.com]
+	[x] Joseph 'Jofish' Kaye [jofish@media.mit.edu]
+
+
+##### Version 1.0 Rc1
+
+[x] Fix firework height
+[x] Try speeding up ground collapse 2x
+[x] Bug: Mouse clicks are broken on the toolbars (in debug mode)
+[x] Bug: rand.Next(3212) == 3212  (Have everything go through Utilities.Rand and mod the value)
+[x] Multiple gravity rainbows
+[x] Fix memory leak
+
+[x] Jason: Up and down is backwards in the help menu.
+[x] Jason: Active shapes don't pay attention to working points.
+[x] Jason: Spray paint ignores working points
+[x] Jason: When there is only one working point (no click-drag), then the circles and squares  (A, S, W, E, N)  don't do anything. Maybe the size should be random.
+		- Don't set the working point if mouse goes up in the same place
+[x] Jason: With one working point, squares populate in random positions.
+[x] Click on working point icon should clear working points
+[x] Bug: In the Help, "PageDn" is spelled wrong.
+[x] Me (Jason): When the mouse is moving, use it as a working point.
+
+[x] Jason: No need for a bomb button
+	- remember the last brush
+[x] Gravity rainbows should delay for several frames
+[x] Make a clear screen Icon
+[x] Add the clear screen icon
+[x] Make the esc key Ctrl-. + clear
+[x] Make some other key the clear screen key (~)
+[x] Make a "stop" icon
+[x] Run the renderer in a thread.  Handle hangs and aborts there.
+	[x] Make sure you can actually handle a hang
+	[x] Changing the animation loop during the keyboard operation is bad
+		- Look into all the foreach loops to check for threading conflicts
+	[x] Working points DOn't work right when clickin on the icon
+	[x] Cursor goes away forever in stress mode  (Maybe lock the hide and show operations)
+	[x] F1 help is flashing
+	
+	
+[x] Esc should reset sticky modes such as tile drawing
+[x] Add Text Entry Icon
+	- Text entry should move with the current mouse
+[x] Show animation count with fps
+[x] Make sure to correctly report all D3D errors
+[x] Import madlibs code
+[x] Add madlibs to stress mode
+[x] Bug: Does not work under non-Admin
+
+[x] We are getting a hang somewhere - need to be able to fully recover from a hang
+[x] Bug: make sure to add \screendata to the folders in the setup 
+[x] Bug: Page goes away after sleeping
+[x] Bug: After Screensaver, the toolbars are not displayed
+[x] Make stress mode just save the exceptions
+[x] Update the icon
+[x] Cheeze (for the maze)
+[x] Shift-V show cheeses
+[x] Move snow to D0
+[x] Move brushes to top row of keys
+	w - circle  (circle) End
+	e - shader (suare) OemOpenBrackets
+	r - scuare (plasma) K 
+	t - spraypaint (tree) OemPlus
+	y - Life Paint (gravity rainbow) OemQuestion
+	u - minipic (active suare) Oem6
+	i - Line target (xor suare) OemMinus
+	o - Flood fill (xor circle) LWin
+	p - working points (picture) aPPS
+	
+[x] Line draw
+[x] Tree should be based off of mousey
+[x] Randomized brush - dynamically pick a random brush type, color, and size
+[x] Checkerboard
+[x] With Thread Abort Exceptions, remember the animation list
+[x] Make autobrush and bees last longer
+[x] More Icons
+	[x] text entry
+	[x] Help
+	[x] Save
+	[x] Load
+	[x] colorPicker
+	[x] Bees
+	[x] Autobrushes
+	[x] password hint (Exit Button)
+[x] Color Counter
+	[x] Consolidate animated colors
+	[x] Ignore dark colors
+	[x] Put a little x in the upper right corner, clicking the closes the window
+[x] Bug:Sticky Keys dialog is getting through
+[x] Jason: Match the toolbars with key order
+
+[x] Opening and saving highlight the wrong icons.
+[x] Make Fn keys "mode" keys
+	[x] Game of Life (make some teams, add the color counter)
+	[x] Gravity play
+	[x] Maze Game  (add cheese)
+	[x] Flood Fill on diffuse/fade
+	[x] Screen decay with blue color (blue chaser)
+	[x] Ground collapse  + fader + gravity rainbow
+	[x] Fuzzy KaleidoScope (with random brush picker)
+	[x] Text Coolness - Cool random background with random sentences (or just text)
+	[x] Tile Painter
+	[x] Water Color
+	[x] Bees and ants
+[x] Bug: too many sounds creates a weird cutoff
+[x] Make rain more intense
+
+[x] Screensaver mode
+	[x] Never show config in screensaver mode
+	[x] Arg: /s - Run screensaver
+	[x] arg: /c - Show config
+	[x] Arg: /p <hwnd> - show in preview
+		[x] We are not getting a control from the given handle.  Pass the handle and in the 
+		    constuctor get the control if we can.
+	[x] Screensaver mode = gentler stress mode
+		[x] Don't draw screensave stuff unless the mouse has been still a long time
+		[x] Randomly place the mouse
+		
+[x] Bug: Mouse doesn't work right
+[x] On a crash, dump the crash info to a file
+[x] Going to sleep causes the mouse cursor hiding to mess up.
+[x] Settings
+	[x] Screensaver
+		[x] Playable
+		[x] Mute Volume
+	[x] General
+		[x] Volume
+		[x] Windowed
+		[x] Check for updates
+		[x] Report errors
+	[x] Kid safety
+		[x] Exit Code yes/no
+		[x] Exit Code
+		[x] Exit Code hint
+		[x] Mouse isn't working in !kid safe
+		[x] Button in upper left not exiting the program when not kid safe
+	[x] Jason and Dillon: Cancel button on settings is confusing.  Just bring up the settings on the first launch.
+
+[x] Screensaver settings need to be the same as the regular program settings
+[x] Install as a screensaver
+[x] Add a settings icon to program menu
+
+[x] Bug: Mug picture has a little dingleberry on it
+[x] Bug: Don't check for the latest version in screensaver mode
+[x] Bug: Put back the hang protection
+[x] Bug: Investigate how a lost surface might cause a hang.
+[x] Make the bees more wild and crazy
+[x] new game, exploder and bees
+[x] Eaer egg 
+	[x] Add pictures for easter egg
+	[x] pick the rainbow animated color 65448 - Go to text mode and type "whimsicality" - minipics replaced with heads.
+	[x] Make the text an easter egg
+[x] New pics: Violin, French Horn, spool, hand
+[x] Make the inactive icons have a gray background
+[x] Screen XOR
+[x] Fix F1 Help
+[x] Cripple a few items for demo mode
+	[x] FunKey modes should be registered version only.
+	[x] Make sure screen saver works only if registered
+		[x] If not registered, show a message
+	[x] Saving and loading
+	[x] Windowed mode
+[x] Install: shortcut icons are broken
+[x] Remove trial version text
+
+[x] Eliminate beta date check
+[x] Try using a direct draw interface 
+[x] Don't do funkeys in stress mode
+[x] In debug version, don't resize anymore
+[x] in debug version, show days left- shange expiration code to return days left
+[x] Pixelwhimsy icon on the main page
+[x] Screensaver preview needs to be fixed
+
+##### Version 11
+
+[ ] Prepare for release
+	[x] Database
+		[x] Set up a Test table
+		[x] Try to connect with a database admin 
+		[x] Add some records
+		[x] Try to access with an asp page
+		[x] Insert a record with asp
+		[x] Licences Table
+			(Key) ID
+			(Index) Registration code QFWX DDYY DDDD EEEE
+			Name, address, etc.
+			Date of purchase
+			Type of purchase
+			Max licenses
+			Max license overflow
+			? Current used licenses (0)
+			Reset count
+			Notes (Memo)
+		[x] Registrations table
+			Date/Time 
+			LicenseID
+			Source IP
+			Host?
+			Version
+	[x] Create indexes and relationships
+	
+	[x] Set up digital river account
+	[x] Point Niftibits.com to your 1&1 account
+	
+	[x] swreg entry
+		[x] Create a small product image
+		[x] How do we tell which package they purchased?
+		[ ] Change look and feel
+	
+	[x] Pw.com\merchantrequest.asp
+		[x] Set up a database
+		[x] Get user data out of request
+		[x] Generate a registration code 
+		[x] Create an entry in the database
+		[x] Return the registration code 
+ 
+	[x] Pw.com\registrationrequest.asp
+		[x] Receive the following information
+				Version
+				Registration code
+		[x] Find the entry in the database
+		[x] If current used licenses < max overflow
+				Return yes
+			Else
+				Return no, reason
+		[x] Verify
+			[x] regular product key should use a license => "Yes, New Registration"
+			[x] key with lower case and spaces
+			[x] short computer ID should always use up a license
+			[x] Repeat computer ID should not use up a license => "Yes, already registered"
+			[x] Missing license should report "No, License is no valid"
+			[x] Over max licenses should say "Probably Pirated"
+			[x] Over max licenses, but seen before should say "Yes"
+ 
+	[x] Pw.exe
+		[x] If not registered, show registration dialog
+		[x] Add a registration alert dialog at the beginning.  No keystrokes accepted, must click.	
+		[x] Register if the code is correct
+		[x] If the web site says there is a problem, let them know about it.
+
+
+[x] Bug: Make ctrol set the current color for everything.  (Doesn't work with spirograph)
+		- Do this for trees too
+[x] Bug: Password is not showing up at the beginning (Draw starting stuff in frame 20) 
+[x] Move keyboard status to one of the special keys at the top
+[x] New feature: Auto brushes.  
+[x] Brush: Fill tool
+	[x] Add fill cursor
+[x] Brush: Shader (Paint and make things darker)
+	[x] Give a better visual cue
+[x] Key: Random Brush Size
+[x] New feature: kalliedoscope drawing (like tile painting)
+[x] Figure out resolution 
+		500x375 = "Medium" number of pixels, large screen
+		Screen sizes: large and small
+		PixelCount: low (120Kp), Medium (200 Kp), High (400 Kp)
+[x] Clean up settings dialog
+[x] Fix Version Display
+[x] Load arbitrary resolutions
+[x] Move stats to the frame
+[x] Let Mouse operate in the frame
+[x] Show status bars
+	[x] Make a list of the different types of animations
+	[x] Add Bars
+		[x] perpetual (screen) animations
+		[x] Draw Modes
+		[x] Brushes
+	[x] Handle Draw Modes
+	[x] Handle perpetual animations
+	[x] Handle Brushes
+	[x] Handle Clicking
+[x] Bug: Shader does not work right in tile mode
+[x] Bug: "starting up graphics" doesn't show til the last second
+
+
+
+##### Version 10
+
+[x] "Flatten" the screen (backspace)
+[x] Tile painting (Caps lock)
+[x] Animated color circles and squares
+[x] Touch-sensitive bomb
+[x] Instructions:  up and down change the pictures
+[?] m stops placing randomly after a while
+[x] BUG: lastActiveControl can be null in Key Handler
+[x] Put more contact information on the site.`
+[x] Record a kinder, gentler kaboom
+[x] <ENTER> toggles text entry
+	[x] adjust font size and face (+, -, pageup, pagedown)
+	[x] Key click sounds
+	[x] Don't antialias on animated colors
+	[x] Port DirectVarmint changes up to the depot
+[x] Move Brushes to Fn Keys
+[x] Make a dragging cursor type
+[x] Spirograph
+[x] Maze (Animated- draw the walls as the cursor moves around the maze)
+[x] More Pictures  http://us.fotolia.com/ 
+[x] Slow down the rain
+[x] Fade and diffuse should flatten the animated colors
+[x] Move keypad keys to the numeric keys.  Make the keypad a keyboard 
+	[x] Verify Key assignments
+	[x] Clean up the last three keys
+	[x] Playnote is broken
+	[x] Fix Key assignments page
+	[x] Fix instructions
+[x] Random circles are too big
+[x] Separate out fireworks to other keys
+[x] Scroll help with arrows 
+[x] add mouse hint to F1 help
+[x] Have a couple of keys to pick random colors (controlled randomness)
+[x] Bug: some fonts do not support "Regular"
+[x] Bug: Mouse clicks when moved during text mode
+[x] Have working points apply to flipping functions
+[x] Move current version to a utility site
+[x] Fix instructions in the game
+[x] Fix instructions on the web site
+[x] Reset the windows when there is an exception
+[x] BUG: fontID selection is wrong
+[x] Recover from a hung state
+[x] BUG: Font looses hdc on abc
+[x] Extend watchdoc timer to 10 seconds
+
+
+##### Version 9
+
+[x] Remove sounds that aren't being used and put them in an unused folder
+[x] F1 - Help and Instructions
+	[x] Make a sound for it
+	[x] More lines, further apart
+[x] BUG: on 2.html page, they PrintScreen instruction should be changed to read MYPICTURES\pixelwhimsy.
+[x] Bring in dv code from the 8/23 email
+[x] Testimonials
+[x] Gallery
+[x] Publish new site
+[x] Add Interrop file (In email- pixelwhimsy folder)
+[x] Upload your soundplayer changes to work
+[x] Handle known exceptions
+[x] Flip vertically, flip horizontally  (Go between the markers if they are set)
+[x] Snow
+[x] Diffusion should not wrap
+[x] Scorched earth ground collapse
+[x] Plasma
+[x] Trees
+[x] Do the rest animated colors
+[x] Make the random color choose from all colors
+[x] A very simple install
+
+
+##### Version 8
+
+[x] Web site:  instructions link is broken
+[x] Web site: move downloads to a folder that is counted.
+
+[x] Create a guid on installation
+[x] Put a better title on error mails
+[x] Automatic update check
+[x] Automatic Error reporting
+[x] Line target. (Key: M)    A moveable target appears on the screen.  Drawing with the mouse causes lines to sweep from the target to the mouse cursor.
+	[x] Moire pattern (as animation?)
+[x] Smooth Screen movement effects (Keypad 6)
+	[x] Bug: fails on animated colors
+	[x] Do a random effect unless another key is pressed
+[x] Rain (Keypad 7)
+	[x] Animated drops fall onto the screen
+	[x] Colors "melt" where the rain falls
+	[x] Rain shows in the overlay buffer
+[x] Screen Slide movement effects (Keypad 8)
+[x] Change piano sound to last sound played (Keypad /)
+[x]	. = freeze animations,  Ctrl-. = stop all animations
+[x] Space should do something interesting (frieworks)
+[x] New Fireworks
+[x] more pictures
+[x] Set points mode (Key: x) - first keypress sets point1, next click point2.  Used to choose random values if they are active
+[x] Buy pixelwhimsy.com 
+[x] set up business hosting plan
+[x] Talk to Lindsey after you have purchased the domain
+[x] Gravity rainbow. (Key: y) 
+[x] Add paint sounds
+[x] Email new soundeffect constructor to work
+[x] Change name
+	[x] Sound (record a few versions)
+	[x] Graphics at start (change to an animation that fades in and has rainbow colors
+		Courier New
+		Script MT Bold
+	[x] .exe Name
+[x] Add a reference to the web site and a reminder to check for updates
+[x] Track stats key pressed, animation time
+	[x] Don't record stuff in stress mode
+[x] Send new sound player code to work
+[x] Add code to check updates
+[x] Look for the registry entry that says I can check the internet for updates.  If not there, pop up and ask the user.
+[x] Throttle fireworks
+[x] Port over current flabbergasted web pages.
+[x] Create new pixelwhimsy web graphics with the correct logo
+[x] Don't try to save pictures in stress mode
+[x] Create email address: support, webmaster, catch-all @pixelwhimsey.com
+[x] Change mouse cursor on save and load
+[x] What happens when you try to load an empty slot?
+
+
+##### Version 7
+
+[x] Bug: I and O should not pay attention to mouse motion
+[x] Bug: bees start out heading to the corner
+[x] Bug: game of life behavior is wrong at the edges
+[x] Add game of life sound when placing a pattern
+[x] Bug: sometimes we only get half a picture
+[x] Get Rid of the coin for a penny
+[x] Add some pretty rocks, gems
+[x] Bug: Drawpics Always draws random even when the mouse is moving
+[x] Simple graphics
+	[x] Random placement
+	[x] Painting
+[x] Add keys to drop gliders and gliderguns http://www.radicaleye.com/lifepage/
+	[x] Random placement
+	[x] Painting
+[x] Expire sooner
+[x] Painting click sounds
+[X] MouseWheel adjust bush size
+[X] Bug: Life does not color cycle as you paint
+[x] Add a stress mode to find hang problems
+[x] Make screen decay go faster
+[x] On no movement, make the mouse cusror disappear
+[x] Bug: Null reference in soundplayer.cs:414  (Removing sounds from the sound queue)
+	- are we adding null sounds?
+	- should we lock the add
+[x] Make the brush size sound less annoying
+[x] If the color picker is active, show the crosshair mouse cursor
+[x] Hide the windows mouse cursor
+[x] Up and down arrows should have a little delay from the initial hit to allow for single stroke actions
+[x] Unmapped keys: Create a default mapping for unmapped keys so that you get the same sound and shape each time
+[x] Shorten beta expiration
+
+##### Version 6
+
+[x] Fix typo in instructions
+[x] Make the unassigned key thing less jarring
+[x] Freja says, "Flabbergasted"
+[x] fireworks
+[x] PrintScreen
+	[x] Switch the mode to show the current save slots
+	[x] Arrows move the save slot cursor
+	[x] Mouse moves the save slot cursor
+	[x] Esc cancels
+	[x] A click or a keystroke saves
+	[x] Show contents of save slot
+[x] Load Picture (Insert)
+[x] Map ctrl-S, Ctrol-O to file operations
+[x] Bug:
+	System.IndexOutOfRangeException: Index was outside the bounds of the array.    
+	at Animation.ColorDiffuser.MoveOnePixel()    
+	at Animation.ColorDiffuser.Render()  
+
+
+##### Version 5
+
+[x] Animations should not run when the color picker is on.
+[x] Add Alt-F4, Alt-Tab, Ctrl-C, and Ctrl-Break as password hint keys
+[x] Display the password hints as a moving box with animated colors (harder to miss)
+[x] Fader
+[x] Escape should clear to black, ctrl-escape to current color, alt-escape to random color
+[x] Xor circle and rectanble
+[x] BUG: Lots of ctl-alt delete's can bring the taskbar to the top, allowing mouse clicks on items there.
+[x] Colorpicker improvements
+	[x] Draw a frame around the color picker and show current color at the top, next to last color
+	[x] Show current color, hover color
+	[x] Leaves crap on the screen
+	[x] hoving over the color picker shows the current clickable color alongside the current color
+	[x] Stretch animated color frame from 32 to 64 colors
+	[x] left click picks color and clears dialog
+	[x] Other keys should close the color picker
+	[x] Faster palette animation
+[x] pixel-wise Diffuser
+[x] Color-wise diffuser
+[x] Better placement of Random circles and squares
+[x] Add key list to web page
+[x] Add quit information to the web page and readme.
+[x] Make wah wah quieter
+
+
+
+##### Version 4
+
+[x] Game of life optimization
+[x] I'd suggest putting the how-to-quit instructions on the starting screen instead of needing to discover it with q
+[x] If I hit either shift key 5 times quickly, I get the StickyKeys popup, though I can't click on it to dismiss. 
+[x] ctrl-clearscreen clears to current color;
+[x] Bees need to be brighter and leave behind the current color
+[x] Add loop sound to screen decay
+[x] spray paint
+	[x] Random shape
+	[x] Cursor
+	[x] Painting (holding still should still paint more dots)
+[x] Game of life
+	[x] Assign to key
+	[x] Add a loop sound
+[x] Fix email address on web page  (make a graphic)
+[x] Fix slash in zip filename
+
+
+
+##### Version 3
+
+[x] Bug:  Right-click is selecting the color from the wrong window
+[x] Bug: Mouse movement is setting the wrong mouse values for the lower screen
+[x] Bees
+[x] Go back to one screen
+[x] MouseControl in the System handlers
+[x] BUG: Stats should not show on top of password hint
+[x] Bug: Scratchy sounds on kids computer
+[x] Bug: English Date format crashes the program
+
+##### Version 2
+
+[x] When a window quits, the other windows don't know.  Set a quit flag in the global state
+[x] Multiple screens
+[x] Change up/down arrows to work continuously
+[x] Show the password hint after Ctrl-Alt-Del
+[x] Quit Code Qq
+[x] Restore the area behind the color picker when it turns off
+[x] Shorter mouse active state
+[x] Handle alt keys
+[x] Add lots of sounds to the binary
+[x] Circle
+[x] square
+[x] Sounds for ctrl, alt, and shift
+[x] Piano
+[x] Better Random colors for flabbergasted
+
+#### Version 0
+
+[x] Waving the mouse changes the cursor state to “active”.   It remains active for a few seconds, then goes to passive.  When in active state, keys don’t have an effect until they are let up and they work in conjunction with the moise.  When in passive states, the keys perform random things on every keydown event.
+[x] Expiration code
+	[x] Expires if date is old
+	[x] Show expiration message
+[x] Beta text
+[x] pick an initial drawing color
+[x] Stats toggle
+[x] Clear screen
+[x] Random effects
+[x] Flabbergasted logo as a font
+[x] New sounds
+[x] Send to beta testers (jofish, dillon, justin)
+[x] filled square
+[x] filled circle
+
+
+[x] Circle key
+[x] square key
+[x] Show brush shape and size in the cursor
+[x] Use arrows to change brush size
+[x] Show animated mouse cursor
+[x] Paint with circle
+[x] Paint with a square
+[x] Colorpicker
+[x] Right-mouse picks color
+[x] change drawmode based on mouse movement
+[x] Smooth mouse motion
+[x] Fix the pixel ripple
+[x] Bug: Getpixel is broken
+[x] Animated color picker
+
+
+[x] Q key does not work in released version
+[x] Get source backup going
+[x] Sound effects
+[x] Switch keyboard handlers to keyup handlers and keydown handlers
+	[x] Bug:One keystroke generates 3 hits
+[x] Set up a pre-build event to update beta expiration and version
+[x] Load sounds from an embedded resource
+[x] Task manager killer
+[x] Hijack the cursor 
