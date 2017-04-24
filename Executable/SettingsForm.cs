@@ -63,9 +63,6 @@ namespace PixelWhimsy
 
             soundPlayer = new SoundPlayer(this);
             soundPlayer.MasterVolume = Settings.Volume;
-
-
-            if (!Settings.Registered) checkBoxWindowed.Enabled = false;
         }
 
         private void buttonOK_Click(object sender, EventArgs e)

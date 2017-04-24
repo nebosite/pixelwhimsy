@@ -192,16 +192,13 @@ namespace PixelWhimsy
             {
                 case ScreenMode.Normal: HandleMouse_Normal(); break;
                 case ScreenMode.SaveScreen:
-                    if(Settings.Registered) SaveCurrentScreen();
+                    SaveCurrentScreen();
                     EndScreenIO();
                     break;
                 case ScreenMode.LoadScreen:
                     EndScreenIO();
-                    if (Settings.Registered)
-                    {
-                        LoadPicture(GetDataFileName(screenSlot), dvWindow.MainBuffer, 1);
-                        MediaBag.Play(SoundID.Slide_Laugh);
-                    }
+                    LoadPicture(GetDataFileName(screenSlot), dvWindow.MainBuffer, 1);
+                    MediaBag.Play(SoundID.Slide_Laugh);
                     break;
                 default: break;
             }

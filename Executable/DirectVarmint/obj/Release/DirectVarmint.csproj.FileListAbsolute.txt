@@ -21,3 +21,4 @@ C:\Users\hans\git\pixelwhimsy\Executable\DirectVarmint\bin\Release\SharpDX.XInpu
 C:\Users\hans\git\pixelwhimsy\Executable\DirectVarmint\bin\Release\SharpDX.MediaFoundation.xml
 C:\Users\hans\git\pixelwhimsy\Executable\DirectVarmint\obj\Release\DirectVarmint.dll
 C:\Users\hans\git\pixelwhimsy\Executable\DirectVarmint\obj\Release\DirectVarmint.pdb
+C:\Users\hans\git\pixelwhimsy\Executable\DirectVarmint\obj\Release\DirectVarmint.csprojResolveAssemblyReference.cache

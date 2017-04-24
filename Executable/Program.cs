@@ -168,7 +168,7 @@ namespace PixelWhimsy
 
             GetPrivacySettings();
 
-
+#if false
             // Prompt for registration if we aren't registered
             if (!Settings.Registered && !GlobalState.RunningAsScreenSaver)
             {
@@ -186,6 +186,7 @@ namespace PixelWhimsy
             }
 
             if (Settings.Expired) return;
+#endif
 
 
             if (!GlobalState.RunningAsScreenSaver && Settings.ShowSettings)
@@ -541,9 +542,9 @@ namespace PixelWhimsy
             return slateId;
         }
 
-        #endregion
+#endregion
 
-        #region Window killer
+#region Window killer
         const int WM_CLOSE = 0x10;
         [DllImport("user32.dll", SetLastError = true)]
         static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
@@ -612,6 +613,6 @@ namespace PixelWhimsy
             }
         }
 
-        #endregion
+#endregion
     }
 }

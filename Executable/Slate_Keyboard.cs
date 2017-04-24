@@ -257,35 +257,17 @@ namespace PixelWhimsy
             actionTranslations.Add(Keys.F22, KeyAction.BrushSelectSquare);
 
 
-            if (Settings.Registered)
-            {
-                funKeyTranslations.Add(Keys.F2, FunKeyLifePlayer);
-                funKeyTranslations.Add(Keys.F3, FunKeyGravityPlay);
-                funKeyTranslations.Add(Keys.F4, FunKeyMazeGame);
-                funKeyTranslations.Add(Keys.F5, FunKeyFloodFillPlay);
-                funKeyTranslations.Add(Keys.F6, FunKeyBlueChaser);
-                funKeyTranslations.Add(Keys.F7, FunKeyGroundFall);
-                funKeyTranslations.Add(Keys.F8, FunKeyFuzzyKaleidoscope);
-                funKeyTranslations.Add(Keys.F9, FunKeyExploderAndBee);
-                funKeyTranslations.Add(Keys.F10, FunKeyTilePainter);
-                funKeyTranslations.Add(Keys.F11, FunKeyWaterColor);
-                funKeyTranslations.Add(Keys.F12, FunKeyBeesAndAnts);
-            }
-            else
-            {
-                funKeyTranslations.Add(Keys.F2, FunKeyUnregistered);
-                funKeyTranslations.Add(Keys.F3, FunKeyUnregistered);
-                funKeyTranslations.Add(Keys.F4, FunKeyUnregistered);
-                funKeyTranslations.Add(Keys.F5, FunKeyUnregistered);
-                funKeyTranslations.Add(Keys.F6, FunKeyUnregistered);
-                funKeyTranslations.Add(Keys.F7, FunKeyUnregistered);
-                funKeyTranslations.Add(Keys.F8, FunKeyUnregistered);
-                funKeyTranslations.Add(Keys.F9, FunKeyUnregistered);
-                funKeyTranslations.Add(Keys.F10, FunKeyUnregistered);
-                funKeyTranslations.Add(Keys.F11, FunKeyUnregistered);
-                funKeyTranslations.Add(Keys.F12, FunKeyUnregistered);
-            }
-
+            funKeyTranslations.Add(Keys.F2, FunKeyLifePlayer);
+            funKeyTranslations.Add(Keys.F3, FunKeyGravityPlay);
+            funKeyTranslations.Add(Keys.F4, FunKeyMazeGame);
+            funKeyTranslations.Add(Keys.F5, FunKeyFloodFillPlay);
+            funKeyTranslations.Add(Keys.F6, FunKeyBlueChaser);
+            funKeyTranslations.Add(Keys.F7, FunKeyGroundFall);
+            funKeyTranslations.Add(Keys.F8, FunKeyFuzzyKaleidoscope);
+            funKeyTranslations.Add(Keys.F9, FunKeyExploderAndBee);
+            funKeyTranslations.Add(Keys.F10, FunKeyTilePainter);
+            funKeyTranslations.Add(Keys.F11, FunKeyWaterColor);
+            funKeyTranslations.Add(Keys.F12, FunKeyBeesAndAnts);
         }
 
         #region KEY TO TEXT TRANSLATIONS
@@ -507,7 +489,7 @@ namespace PixelWhimsy
 
             if (GlobalState.RunningAsScreenSaver)
             {
-                if (!Settings.Registered || !Settings.PlayableScreensaver)
+                if (!Settings.PlayableScreensaver)
                 {
                     GlobalState.EndApplication = true;
                     return;
@@ -1427,19 +1409,6 @@ namespace PixelWhimsy
         /// --------------------------------------------------------------------------
         void ScreenPickerAnimation()
         {
-            if (!Settings.Registered)
-            {
-                dvWindow.MainBuffer.Clear(MediaBag.color_Blue);
-                string text =
-                    "Screen saving and loading is \n" +
-                    "enabled in the registered version\n" +
-                    "of PixelWhimsy.  Please register\n" +
-                    "at www.pixelwhimsy.com.";
-
-                DrawCenteredText(dvWindow.MainBuffer, text, MediaBag.color_White);
-                return;
-            }
-
             int smallWidth = dvWindow.MainBuffer.Width / 4;
             int smallHeight = dvWindow.MainBuffer.Height / 4;
             ushort textColor = dvWindow.MainBuffer.GetPaletteColor((uint)(Color.Yellow.ToArgb()));

@@ -367,7 +367,6 @@ using Microsoft.Xna.Framework.Audio;
         // Ignores WinForms paint-background messages to avoid flickering.
         protected override void OnPaintBackground(PaintEventArgs pevent) { }
 
-
         #endregion
 
         protected abstract void Initialize();
@@ -387,8 +386,7 @@ using Microsoft.Xna.Framework.Audio;
     class GraphicsDeviceService : IGraphicsDeviceService
     {
         #region Fields
-
-
+        
         // Singleton device service instance.
         static GraphicsDeviceService singletonInstance;
 
@@ -396,6 +394,16 @@ using Microsoft.Xna.Framework.Audio;
         // Keep track of how many controls are sharing the singletonInstance.
         static int referenceCount;
 
+        GraphicsDevice graphicsDevice;
+
+        // Store the current device settings.
+        PresentationParameters parameters;
+        
+        // IGraphicsDeviceService events.
+        public event EventHandler<EventArgs> DeviceCreated;
+        public event EventHandler<EventArgs> DeviceDisposing;
+        public event EventHandler<EventArgs> DeviceReset;
+        public event EventHandler<EventArgs> DeviceResetting;
 
         #endregion
 
@@ -417,58 +425,6 @@ using Microsoft.Xna.Framework.Audio;
 
             graphicsDevice = new GraphicsDevice(GraphicsAdapter.DefaultAdapter,
                 GraphicsProfile.HiDef, parameters);
-        }
-
-        event EventHandler<EventArgs> IGraphicsDeviceService.DeviceCreated
-        {
-            add
-            {
-                throw new NotImplementedException();
-            }
-
-            remove
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        event EventHandler<EventArgs> IGraphicsDeviceService.DeviceDisposing
-        {
-            add
-            {
-                throw new NotImplementedException();
-            }
-
-            remove
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        event EventHandler<EventArgs> IGraphicsDeviceService.DeviceReset
-        {
-            add
-            {
-                throw new NotImplementedException();
-            }
-
-            remove
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        event EventHandler<EventArgs> IGraphicsDeviceService.DeviceResetting
-        {
-            add
-            {
-                throw new NotImplementedException();
-            }
-
-            remove
-            {
-                throw new NotImplementedException();
-            }
         }
 
 
@@ -543,20 +499,6 @@ using Microsoft.Xna.Framework.Audio;
         {
             get { return graphicsDevice; }
         }
-
-          
-        GraphicsDevice graphicsDevice;
-
-
-        // Store the current device settings.
-        PresentationParameters parameters;
-
-
-        // IGraphicsDeviceService events.
-        public event EventHandler DeviceCreated;
-        public event EventHandler DeviceDisposing;
-        public event EventHandler DeviceReset;
-        public event EventHandler DeviceResetting;
     }
 
     /// <summary>

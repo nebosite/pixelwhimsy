@@ -154,7 +154,7 @@ namespace PixelWhimsy
             /// A class for handling a single gravitating dot
             /// </summary>
             /// --------------------------------------------------------------------------
-            class Dot
+            new class Dot
             {
                 static double G = 100.0;
                 public double x, y, xm, ym, lastx, lasty;

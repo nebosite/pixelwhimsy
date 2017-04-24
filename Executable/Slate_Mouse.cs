@@ -142,7 +142,7 @@ namespace PixelWhimsy
 
             if (GlobalState.RunningAsScreenSaver)
             {
-                if (!Settings.Registered || !Settings.PlayableScreensaver)
+                if (!Settings.PlayableScreensaver)
                 {
                     GlobalState.EndApplication = true;
                     return;
@@ -280,7 +280,7 @@ namespace PixelWhimsy
 
             if (GlobalState.RunningAsScreenSaver)
             {
-                if (!Settings.Registered || !Settings.PlayableScreensaver)
+                if (!Settings.PlayableScreensaver)
                 {
                     GlobalState.EndApplication = true;
                     return;
@@ -376,7 +376,7 @@ namespace PixelWhimsy
 
             if (GlobalState.RunningAsScreenSaver)
             {
-                if (!Settings.Registered || !Settings.PlayableScreensaver)
+                if (!Settings.PlayableScreensaver)
                 {
                     GlobalState.EndApplication = true;
                     return;

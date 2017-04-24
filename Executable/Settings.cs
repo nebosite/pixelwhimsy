@@ -20,7 +20,6 @@ namespace PixelWhimsy
 
         private static bool? checkForUpdates = null;
         private static bool? reportErrors = null;
-        private static bool registered;
         private static string id;
         private static PixelCount pixelCount;
         private static bool kidSafe;
@@ -34,7 +33,6 @@ namespace PixelWhimsy
         private static double evaluationDays = 0;
 
         public static bool? ReportErrors { get { return reportErrors; } set { reportErrors = value; } }
-        public static bool Registered { get { return registered; } set { registered = value; } }
         public static string Id { get { return id; } set { id = value; } }
         public static PixelCount PixelCount { get { return pixelCount; } set { pixelCount = value; } }
         public static bool PlayableScreensaver { get { return playableScreensaver; } set { playableScreensaver = value; } }
@@ -46,7 +44,7 @@ namespace PixelWhimsy
         public static string ExitCode { get { return exitCode; } set { exitCode = value; } }
         public static string ExitHint { get { return exitHint; } set { exitHint = value; } }
         public static double EvaluationDays { get { return evaluationDays; } }
-        public static bool Expired { get { return !Registered && (EvaluationDays >= 30 || EvaluationDays < 0); } }
+        public const bool Expired = false;
 
         /// ----------------------------------------------------------------
         /// <summary>
@@ -69,7 +67,6 @@ namespace PixelWhimsy
             {
                 if (checkForUpdates != null) sourceKey.SetValue("CheckForUpdates", checkForUpdates);
                 if (reportErrors != null) sourceKey.SetValue("ReportErrors", reportErrors);
-                if (registered) sourceKey.SetValue("candied", 22);
                 if (evaluationDays == 0) sourceKey.SetValue("ed", DateTime.Now.Ticks);
                 if (id != null) sourceKey.SetValue("id", id);
                 sourceKey.SetValue("PixelCount", pixelCount);
@@ -93,7 +90,6 @@ namespace PixelWhimsy
         {
             checkForUpdates = null;
             reportErrors = null;
-            registered = false;
             id = null;
             pixelCount = PixelCount.Medium;
             kidSafe = false;
@@ -129,9 +125,6 @@ namespace PixelWhimsy
                             break;
                         case "reporterrors":
                             reportErrors = bool.Parse((string)sourceKey.GetValue(name));
-                            break;
-                        case "candied":
-                            registered = true;
                             break;
                         case "id":
                             id = (string)sourceKey.GetValue(name);

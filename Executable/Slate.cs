@@ -439,21 +439,6 @@ namespace PixelWhimsy
         {
             if (!GlobalState.RunningAsScreenSaver) return;
 
-            if (!Settings.Registered)
-            {
-                StopAnimations(null);
-                StopDelayedActions();
-                dvWindow.MainBuffer.Clear(MediaBag.color_DarkGreen);
-                string text =
-                    "Screen saver mode is \n" +
-                    "enabled in the registered version\n" +
-                    "of PixelWhimsy.  Please register\n" +
-                    "at www.pixelwhimsy.com.";
-
-                DrawCenteredText(dvWindow.MainBuffer, text, MediaBag.color_White);
-                return;
-            }
-
             // Mute the screensaver
             if (Settings.MuteScreenSaverVolume) MediaBag.Mute = true;
 

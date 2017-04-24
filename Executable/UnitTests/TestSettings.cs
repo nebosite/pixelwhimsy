@@ -29,7 +29,6 @@ namespace PixelWhimsy
                     Settings.InitSettings(testKey);
                     Assert.AreEqual(null, Settings.ReportErrors, "\nReportErrors should be null");
                     Assert.AreEqual(null, Settings.Id, "\nShould have no id");
-                    Assert.AreEqual(false, Settings.Registered, "\nShould not be registered");
                     Assert.AreEqual(PixelCount.Medium, Settings.PixelCount);
                     Assert.AreEqual(true, Settings.KidSafe);
                     Assert.AreEqual(true, Settings.PlayableScreensaver);
@@ -42,7 +41,7 @@ namespace PixelWhimsy
 
                     Settings.ReportErrors = false;
                     Settings.Id = "foo";
-                    Settings.Registered = true;
+                    //Settings.Registered = true;
                     Settings.PixelCount = PixelCount.Low;
                     Settings.KidSafe = false;
                     Settings.PlayableScreensaver = false;
@@ -56,7 +55,6 @@ namespace PixelWhimsy
                     Settings.InitSettings(testKey);
                     Assert.AreEqual(null, Settings.ReportErrors, "\nReportErrors should be null");
                     Assert.AreEqual(null, Settings.Id, "\nShould have no id");
-                    Assert.AreEqual(false, Settings.Registered, "\nShould not be registered");
                     Assert.AreEqual(PixelCount.Medium, Settings.PixelCount);
                     Assert.AreEqual(true, Settings.KidSafe);
                     Assert.AreEqual(true, Settings.PlayableScreensaver);
@@ -69,7 +67,6 @@ namespace PixelWhimsy
 
                     Settings.ReportErrors = false;
                     Settings.Id = "foo";
-                    Settings.Registered = true;
                     Settings.PixelCount = PixelCount.Low;
                     Settings.KidSafe = false;
                     Settings.PlayableScreensaver = false;
@@ -84,7 +81,6 @@ namespace PixelWhimsy
                     Settings.InitSettings(testKey);
                     Assert.AreEqual(false, Settings.ReportErrors, "\nReportErrors");
                     Assert.AreEqual("foo", Settings.Id, "\nId");
-                    Assert.AreEqual(true, Settings.Registered, "\nShould be registered");
                     Assert.AreEqual(PixelCount.Low, Settings.PixelCount);
                     Assert.AreEqual(false, Settings.KidSafe);
                     Assert.AreEqual(false, Settings.PlayableScreensaver);
@@ -97,7 +93,6 @@ namespace PixelWhimsy
 
                     Settings.ReportErrors = null;
                     Settings.Id = null;
-                    Settings.Registered = false;
                     Settings.KidSafe = false;
                     Settings.PlayableScreensaver = false;
                     Settings.MuteScreenSaverVolume = false;
@@ -112,7 +107,6 @@ namespace PixelWhimsy
                     Settings.InitSettings(testKey);
                     Assert.AreEqual(null, Settings.ReportErrors, "\nReportErrors");
                     Assert.AreEqual(null, Settings.Id, "\nId");
-                    Assert.AreEqual(false, Settings.Registered, "\nShould not be registered");
                     Assert.AreEqual(PixelCount.Medium, Settings.PixelCount);
                     Assert.AreEqual(true, Settings.KidSafe);
                     Assert.AreEqual(true, Settings.PlayableScreensaver);
