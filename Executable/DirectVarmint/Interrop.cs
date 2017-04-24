@@ -53,7 +53,7 @@ namespace DirectVarmint
     };
 
     [Serializable]
-    struct ABC
+    public struct ABC
     {
         public int abcA;  // Distance to add to the current position before drawing character
         public uint abcB; // Width of the drawn portion
@@ -82,7 +82,7 @@ namespace DirectVarmint
     /// User32 access funtions
     /// </summary>
     /// --------------------------------------------------------------------------
-    class User32
+    public class User32
     {
         [DllImport("user32.dll")]
         public static extern bool IsWindowVisible(IntPtr hWnd);

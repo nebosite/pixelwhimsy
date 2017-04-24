@@ -306,7 +306,7 @@ namespace DirectVarmint
             /// --------------------------------------------------------------------------
             public void SerializeToFile(string fileName)
             {
-                Stream stream = new FileStream(fileName, System.IO.FileMode.Create);
+                Stream stream = File.Create(fileName);
                 IFormatter formatter = new BinaryFormatter();
                 formatter.Serialize(stream, this);
                 stream.Close();
@@ -321,7 +321,7 @@ namespace DirectVarmint
             /// --------------------------------------------------------------------------
             public static DVFont FromFile(string fileName)
             {
-                Stream stream = new FileStream(fileName, System.IO.FileMode.Open);
+                Stream stream = File.OpenRead(fileName);
 
                 return FromFile(stream);
             }

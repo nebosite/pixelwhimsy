@@ -6,7 +6,6 @@ using System.IO;
 using System.Threading;
 using System.Reflection;
 using System.Diagnostics;
-using Microsoft.DirectX.DirectSound;
 
 namespace DirectVarmint
 {
@@ -20,8 +19,6 @@ namespace DirectVarmint
         int maxPlayableSounds = 48;
 
         int mixBufferSize = sampleRate * 4 / 4;
-        Device device;
-        private SecondaryBuffer playBuffer = null;
         byte[] rawBuffer = null;
         int[] mixingBuffer = null;
         MemoryStream bufferStream = null;
@@ -46,6 +43,8 @@ namespace DirectVarmint
             internal int numSamples;
 
             public short[] SoundData { get { return soundData; } }
+            public int NumSamples { get { return numSamples; } set { this.numSamples = value; } }
+
 
             /// --------------------------------------------------------------------------
             /// <summary>
@@ -67,104 +66,104 @@ namespace DirectVarmint
             /// <param name="effectName"></param>
             /// <param name="device"></param>
             /// --------------------------------------------------------------------------
-            public SoundEffect(Stream wavSource, Device device, int targetSampleRate)
+            public SoundEffect(Stream wavSource, int targetSampleRate)
             {
 
-                BufferDescription bufferDescription = new BufferDescription();
-                bufferDescription.ControlEffects = false;
-                SecondaryBuffer soundBuffer = new SecondaryBuffer(wavSource, bufferDescription, device);
+               // BufferDescription bufferDescription = new BufferDescription();
+                //bufferDescription.ControlEffects = false;
+               // SecondaryBuffer soundBuffer = new SecondaryBuffer(wavSource, bufferDescription, device);
 
-                int bytesPerSample = soundBuffer.Format.BitsPerSample / 8;
-                int sourceChannels = soundBuffer.Format.Channels;
-                numSamples = soundBuffer.Caps.BufferBytes / bytesPerSample / soundBuffer.Format.Channels;
+            //    int bytesPerSample = soundBuffer.Format.BitsPerSample / 8;
+            //    int sourceChannels = soundBuffer.Format.Channels;
+            //    numSamples = soundBuffer.Caps.BufferBytes / bytesPerSample / soundBuffer.Format.Channels;
 
-                short[] tempData = new short[numSamples * 2];
+            //    short[] tempData = new short[numSamples * 2];
 
-                Array data = null;
-                if (bytesPerSample == 1)
-                {
-                    data = soundBuffer.Read(0, typeof(byte), LockFlag.None, numSamples * sourceChannels);
-                }
-                else if (bytesPerSample == 2)
-                {
-                    data = soundBuffer.Read(0, typeof(short), LockFlag.None, numSamples * sourceChannels);
-                }
-                else throw new ApplicationException("I only understand 8bit and 16bit audio formats");
+            //    Array data = null;
+            //    if (bytesPerSample == 1)
+            //    {
+            //        data = soundBuffer.Read(0, typeof(byte), LockFlag.None, numSamples * sourceChannels);
+            //    }
+            //    else if (bytesPerSample == 2)
+            //    {
+            //        data = soundBuffer.Read(0, typeof(short), LockFlag.None, numSamples * sourceChannels);
+            //    }
+            //    else throw new ApplicationException("I only understand 8bit and 16bit audio formats");
 
-                int channelOffset = sourceChannels - 1;
-                int lastZero = 0;
+            //    int channelOffset = sourceChannels - 1;
+            //    int lastZero = 0;
 
-                // convert data to 16bit stereo
-                for (int i = 0; i < numSamples; i++ )
-                {
-                    short leftSample = 0;
-                    short rightSample = 0;
+            //    // convert data to 16bit stereo
+            //    for (int i = 0; i < numSamples; i++ )
+            //    {
+            //        short leftSample = 0;
+            //        short rightSample = 0;
 
-                    if (bytesPerSample == 1)
-                    {
-                        byte leftByte = (byte)data.GetValue(i * sourceChannels);
-                        byte rightByte = (byte)data.GetValue(i * sourceChannels + channelOffset);
+            //        if (bytesPerSample == 1)
+            //        {
+            //            byte leftByte = (byte)data.GetValue(i * sourceChannels);
+            //            byte rightByte = (byte)data.GetValue(i * sourceChannels + channelOffset);
                         
-                        // Some compressed PCM data leaves junk at the end, this code 
-                        // tracks the junk so we can clear it later.
-                        if (leftByte == 0)
-                        {
-                            if (lastZero == 0) lastZero = i;
-                        }
-                        else lastZero = 0;
+            //            // Some compressed PCM data leaves junk at the end, this code 
+            //            // tracks the junk so we can clear it later.
+            //            if (leftByte == 0)
+            //            {
+            //                if (lastZero == 0) lastZero = i;
+            //            }
+            //            else lastZero = 0;
 
-                        leftSample = (short)((leftByte - 128) * 256);
-                        rightSample = (short)((rightByte - 128) * 256);
-                    }
-                    else if (bytesPerSample == 2)
-                    {
-                        leftSample = (short)data.GetValue(i * sourceChannels);
-                        rightSample = (short)data.GetValue(i * sourceChannels + channelOffset);
-                    }
+            //            leftSample = (short)((leftByte - 128) * 256);
+            //            rightSample = (short)((rightByte - 128) * 256);
+            //        }
+            //        else if (bytesPerSample == 2)
+            //        {
+            //            leftSample = (short)data.GetValue(i * sourceChannels);
+            //            rightSample = (short)data.GetValue(i * sourceChannels + channelOffset);
+            //        }
 
-                    tempData[i * 2] = leftSample;
-                    tempData[i * 2 + 1] = rightSample;
-                }
+            //        tempData[i * 2] = leftSample;
+            //        tempData[i * 2 + 1] = rightSample;
+            //    }
 
-                // Clean up the 'junk' left at the end of some compressed PCM files
-                if (lastZero > 0)
-                {
-                    for (int i = lastZero; i < numSamples; i++)
-                    {
-                        tempData[i * 2] = 0;
-                        tempData[i * 2 + 1] = 0;
-                    }
-                }
+            //    // Clean up the 'junk' left at the end of some compressed PCM files
+            //    if (lastZero > 0)
+            //    {
+            //        for (int i = lastZero; i < numSamples; i++)
+            //        {
+            //            tempData[i * 2] = 0;
+            //            tempData[i * 2 + 1] = 0;
+            //        }
+            //    }
 
-                // Convert to the target sample rate
-                int realSamples = (int)(((long)numSamples * targetSampleRate) / soundBuffer.Format.SamplesPerSecond);
+            //    // Convert to the target sample rate
+            //    int realSamples = (int)(((long)numSamples * targetSampleRate) / soundBuffer.Format.SamplesPerSecond);
 
-                soundData = new short[realSamples * 2];
-                for (int i = 0; i < realSamples; i++)
-                {
-                    double sourceSample = ((double)i / realSamples * numSamples);
-                    int source1 = (int)sourceSample;
-                    int source2 = source1 + 1;
-                    if (source2 >= numSamples)
-                    {
-                        sourceSample = source2 = source1;
-                    }
+            //    soundData = new short[realSamples * 2];
+            //    for (int i = 0; i < realSamples; i++)
+            //    {
+            //        double sourceSample = ((double)i / realSamples * numSamples);
+            //        int source1 = (int)sourceSample;
+            //        int source2 = source1 + 1;
+            //        if (source2 >= numSamples)
+            //        {
+            //            sourceSample = source2 = source1;
+            //        }
 
-                    short leftChannel1 = tempData[source1 * 2];
-                    short leftChannel2 = tempData[source2 * 2];
-                    short rightChannel1 = tempData[source1 * 2 + 1];
-                    short rightChannel2 = tempData[source2 * 2 + 1];
-                    double contribution2 = sourceSample - source1;
-                    double contribution1 = 1.0 - contribution2;
+            //        short leftChannel1 = tempData[source1 * 2];
+            //        short leftChannel2 = tempData[source2 * 2];
+            //        short rightChannel1 = tempData[source1 * 2 + 1];
+            //        short rightChannel2 = tempData[source2 * 2 + 1];
+            //        double contribution2 = sourceSample - source1;
+            //        double contribution1 = 1.0 - contribution2;
 
-                    double adjustedLeft = contribution1 * leftChannel1 + contribution2 * leftChannel2;
-                    double adjustedRight = contribution1 * rightChannel1 + contribution2 * rightChannel2;
+            //        double adjustedLeft = contribution1 * leftChannel1 + contribution2 * leftChannel2;
+            //        double adjustedRight = contribution1 * rightChannel1 + contribution2 * rightChannel2;
 
-                    soundData[i * 2] = (short)(adjustedLeft);
-                    soundData[i * 2 + 1] = (short)(adjustedRight);
-                }
+            //        soundData[i * 2] = (short)(adjustedLeft);
+            //        soundData[i * 2 + 1] = (short)(adjustedRight);
+            //    }
 
-                numSamples = realSamples;
+            //    numSamples = realSamples;
 
             }
         }
@@ -180,7 +179,24 @@ namespace DirectVarmint
         {
             public SoundEffect effect;
             long playPosition = 0;
-            public bool finished = false;
+            bool finished = false;
+            public bool Finished
+            {
+                get 
+                {
+                    if (xnaInstance != null) return xnaInstance.State == Microsoft.Xna.Framework.Audio.SoundState.Stopped;
+                    return finished; 
+                }
+                set
+                {
+                    finished = value;
+                    if (finished && xnaInstance != null)
+                    {
+                        xnaInstance.Stop();
+                    }
+                }
+            }
+                    
             long playSpeed = 0x10000;
             int volume = 0x10000;
             bool looping = false;
@@ -222,6 +238,19 @@ namespace DirectVarmint
                     if (value < 0) value = 0;
                     playSpeed = (long)(value * 0x10000);
                 }
+            }
+
+            Microsoft.Xna.Framework.Audio.SoundEffectInstance xnaInstance;
+
+            /// --------------------------------------------------------------------------
+            /// <summary>
+            /// Xna version of this
+            /// </summary>
+            /// <param name="numberOfSamples"></param>
+            /// --------------------------------------------------------------------------
+            public SoundInstance(Microsoft.Xna.Framework.Audio.SoundEffectInstance xnaInstance)
+            {
+                this.xnaInstance = xnaInstance;
             }
 
             /// --------------------------------------------------------------------------
@@ -277,7 +306,7 @@ namespace DirectVarmint
                         }
                         else
                         {
-                            this.finished = true;
+                            this.Finished = true;
                             break;
                         }
                     }
@@ -294,7 +323,7 @@ namespace DirectVarmint
         /// --------------------------------------------------------------------------
         public SoundEffect GetSoundEffect(string effectName)
         {
-            return new SoundEffect(DVTools.GetStream(effectName), device, sampleRate);
+            return new SoundEffect(DVTools.GetStream(effectName), sampleRate);
         }
 
         /// --------------------------------------------------------------------------
@@ -306,9 +335,20 @@ namespace DirectVarmint
         {
             SoundInstance instance = new SoundInstance(effect);
 
+            return Play(instance);
+
+        }
+
+        /// --------------------------------------------------------------------------
+        /// <summary>
+        /// Add a sound to the sound queue
+        /// </summary>
+        /// --------------------------------------------------------------------------
+        public SoundInstance Play(SoundInstance instance)
+        {
             lock (this)
             {
-                soundQueue.Insert(0,instance);
+                soundQueue.Insert(0, instance);
                 RemoveExtraSounds();
             }
 
@@ -332,7 +372,7 @@ namespace DirectVarmint
                 // Remove finished sounds first
                 for (int i = 0; i < soundQueue.Count && soundsToKill > 0; )
                 {
-                    if (soundQueue[i].finished)
+                    if (soundQueue[i].Finished)
                     {
                         soundsToKill--;
                         soundQueue.RemoveAt(i);
@@ -377,9 +417,6 @@ namespace DirectVarmint
         /// --------------------------------------------------------------------------
         public SoundPlayer(Control owner)
         {
-            device = new Device();
-            device.SetCooperativeLevel(owner, CooperativeLevel.Normal);
-
             CreateMixingBuffer();
             ThreadPool.QueueUserWorkItem(new WaitCallback(MixWorker), (object)100);
         }
@@ -416,29 +453,29 @@ namespace DirectVarmint
         /// --------------------------------------------------------------------------
         private void CreateMixingBuffer()
         {
-            rawBuffer = new byte[bufferSize];
-            mixingBuffer = new int[bufferSize/(bytesPerSample)];
+            //rawBuffer = new byte[bufferSize];
+            //mixingBuffer = new int[bufferSize/(bytesPerSample)];
 
-            bufferStream = new MemoryStream(rawBuffer);
+            //bufferStream = new MemoryStream(rawBuffer);
 
-            WaveFormat wf = new WaveFormat();
-            wf.FormatTag = WaveFormatTag.Pcm;
-            wf.SamplesPerSecond = sampleRate;
-            wf.BitsPerSample = 16;
-            wf.Channels = 2;
-            wf.BlockAlign = bytesPerSample * channels;
-            wf.AverageBytesPerSecond = sampleRate * bytesPerSample * channels;
-            BufferDescription desc = new BufferDescription(wf);
+            //WaveFormat wf = new WaveFormat();
+            //wf.FormatTag = WaveFormatTag.Pcm;
+            //wf.SamplesPerSecond = sampleRate;
+            //wf.BitsPerSample = 16;
+            //wf.Channels = 2;
+            //wf.BlockAlign = bytesPerSample * channels;
+            //wf.AverageBytesPerSecond = sampleRate * bytesPerSample * channels;
+            //BufferDescription desc = new BufferDescription(wf);
 
-            desc.BufferBytes = mixBufferSize;
-            desc.ControlVolume = true;
-            desc.GlobalFocus = true;
-            desc.LocateInSoftware = true;
+            //desc.BufferBytes = mixBufferSize;
+            //desc.ControlVolume = true;
+            //desc.GlobalFocus = true;
+            //desc.LocateInSoftware = true;
 
-            playBuffer = new SecondaryBuffer(desc, device);
-            mixBufferSize = playBuffer.Caps.BufferBytes;
+            //playBuffer = new SecondaryBuffer(desc, device);
+            //mixBufferSize = playBuffer.Caps.BufferBytes;
 
-            playBuffer.Play(0, BufferPlayFlags.Looping);
+            //playBuffer.Play(0, BufferPlayFlags.Looping);
         }
 
         public int virtualPosition = 0;
@@ -452,89 +489,89 @@ namespace DirectVarmint
         /// --------------------------------------------------------------------------
         public void MixAhead(int milliseconds)
         {
-            timer.Start();
-            // Setup up some memory pointers
+        //    timer.Start();
+        //    // Setup up some memory pointers
 
-            // Where is the mix buffer player right now?
-            int playPosition = playBuffer.PlayPosition;
+        //    // Where is the mix buffer player right now?
+        //    int playPosition = playBuffer.PlayPosition;
 
-            // How many samples do we need to write to stay ahead?
-            int samples = (sampleRate * milliseconds)/1000;
-            int writeTo = playPosition + samples * bytesPerSample * channels;
-            int bytesToWrite = writeTo - lastWritePosition;
+        //    // How many samples do we need to write to stay ahead?
+        //    int samples = (sampleRate * milliseconds)/1000;
+        //    int writeTo = playPosition + samples * bytesPerSample * channels;
+        //    int bytesToWrite = writeTo - lastWritePosition;
 
-            if (lastWritePosition < playPosition &&
-                (mixBufferSize + lastWritePosition) < writeTo)
-            {
-                bytesToWrite = writeTo - mixBufferSize - lastWritePosition;
-            }
+        //    if (lastWritePosition < playPosition &&
+        //        (mixBufferSize + lastWritePosition) < writeTo)
+        //    {
+        //        bytesToWrite = writeTo - mixBufferSize - lastWritePosition;
+        //    }
 
-            // In case the player gets way out of whack, this is a sanity
-            // check to put it back on track
-            if (bytesToWrite < 0)
-            {
-                bytesToWrite = samples;
-                lastWritePosition = playPosition;
-            }
+        //    // In case the player gets way out of whack, this is a sanity
+        //    // check to put it back on track
+        //    if (bytesToWrite < 0)
+        //    {
+        //        bytesToWrite = samples;
+        //        lastWritePosition = playPosition;
+        //    }
 
-            int samplesToWrite = bytesToWrite/(bytesPerSample * channels);
+        //    int samplesToWrite = bytesToWrite/(bytesPerSample * channels);
 
-            // Clear the mixing buffer
-            for (int i = 0; i < samplesToWrite * channels; i++)
-            {
-                mixingBuffer[i] = 0;
-            }
+        //    // Clear the mixing buffer
+        //    for (int i = 0; i < samplesToWrite * channels; i++)
+        //    {
+        //        mixingBuffer[i] = 0;
+        //    }
 
-            // Mix in all sound effects into a mixing buffer
-            soundsToMix.Clear();
-            lock (this)
-            {
-                for (int i = 0; i < soundQueue.Count; i++)
-                {
-                    if (soundQueue[i] == null || soundQueue[i].finished)
-                    {
-                        continue;
-                    }
-                    soundsToMix.Add(soundQueue[i]);
-                }
-            }
+        //    // Mix in all sound effects into a mixing buffer
+        //    soundsToMix.Clear();
+        //    lock (this)
+        //    {
+        //        for (int i = 0; i < soundQueue.Count; i++)
+        //        {
+        //            if (soundQueue[i] == null || soundQueue[i].finished)
+        //            {
+        //                continue;
+        //            }
+        //            soundsToMix.Add(soundQueue[i]);
+        //        }
+        //    }
 
-            int numSoundsMixed = 0;
-            foreach (SoundInstance instance in soundsToMix)
-            {
-                instance.Mix(mixingBuffer, samplesToWrite, MasterVolume, numSoundsMixed < maxPlayableSounds);
-                numSoundsMixed++;
-            }
+        //    int numSoundsMixed = 0;
+        //    foreach (SoundInstance instance in soundsToMix)
+        //    {
+        //        instance.Mix(mixingBuffer, samplesToWrite, MasterVolume, numSoundsMixed < maxPlayableSounds);
+        //        numSoundsMixed++;
+        //    }
 
-            //MixTestSound(samplesToWrite);
+        //    //MixTestSound(samplesToWrite);
 
-            // Copy mixing buffer to rawBuffer for writing, clipping as we go
-            for (int i = 0; i < samplesToWrite * channels; i++)
-            {
-                int data = mixingBuffer[i];
+        //    // Copy mixing buffer to rawBuffer for writing, clipping as we go
+        //    for (int i = 0; i < samplesToWrite * channels; i++)
+        //    {
+        //        int data = mixingBuffer[i];
                 
-                // Clip
-                if (data < -32767) 
-                    data = -32767;
-                else if (data > 32767) 
-                    data = 32767;
+        //        // Clip
+        //        if (data < -32767) 
+        //            data = -32767;
+        //        else if (data > 32767) 
+        //            data = 32767;
 
-                rawBuffer[i * 2] = (byte)(data & 0xff);
-                rawBuffer[i * 2 + 1] = (byte)(data >> 8);
-            }
+        //        rawBuffer[i * 2] = (byte)(data & 0xff);
+        //        rawBuffer[i * 2 + 1] = (byte)(data >> 8);
+        //    }
 
 
-            // Write the raw buffer into the Secondary buffer at the correct location
-            bufferStream.Seek(0, SeekOrigin.Begin);
+        //    // Write the raw buffer into the Secondary buffer at the correct location
+        //    bufferStream.Seek(0, SeekOrigin.Begin);
 
-            if(bytesToWrite > 0)
-                playBuffer.Write(lastWritePosition, bufferStream, bytesToWrite, LockFlag.None);
+        //    if(bytesToWrite > 0)
+        //        playBuffer.Write(lastWritePosition, bufferStream, bytesToWrite, LockFlag.None);
 
-            lastWritePosition += bytesToWrite;
-            if (lastWritePosition >= mixBufferSize) 
-                lastWritePosition -= mixBufferSize;
+        //    lastWritePosition += bytesToWrite;
+        //    if (lastWritePosition >= mixBufferSize) 
+        //        lastWritePosition -= mixBufferSize;
 
-            mixTime = timer.ElapsedSeconds;
+        //    mixTime = timer.ElapsedSeconds;
         }
 
         /// --------------------------------------------------------------------------

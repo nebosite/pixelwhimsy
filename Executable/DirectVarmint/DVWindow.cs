@@ -4,8 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Threading;
-using Microsoft.DirectX;
-using Microsoft.DirectX.DirectDraw;
+using System.Diagnostics;
 
 
 namespace DirectVarmint
@@ -18,12 +17,8 @@ namespace DirectVarmint
     /// --------------------------------------------------------------------------
     public class DVWindow
     {
-        private Device device = null;
+        DirectVarmintControl underlyingControl;
 
-        private Clipper graphicsClipper = null;
-        private Surface surfacePrimary = null;
-        private Surface surfaceSecondary = null; 
-        
         private PixelBuffer mainBuffer = null;
         private PixelBuffer overlayBuffer = null;
 
@@ -31,8 +26,6 @@ namespace DirectVarmint
         private Control ownerControl = null;
 
         RenderMethod renderMethod = null;
-        internal int bufferWidth = -1;
-        internal int bufferHeight = -1;
         public uint[] palette = null;
         private bool autoRender = true;
         private bool windowWasReset = false;
@@ -45,8 +38,18 @@ namespace DirectVarmint
 
         public bool AutoRender { get { return autoRender; } set { autoRender = value; } }
 
+        HiPerfTimer renderTimer = new HiPerfTimer();
+        double renderMilliseconds = 0;
+        string lastRenderProblem = null;
+        uint frame = 0;
+
         // General properties
-        public Device Device { get { return this.device; } }
+        public double RenderMilliseconds { get { return renderMilliseconds; } set { this.renderMilliseconds = value; } }
+        public string LastRenderProblem { get { return lastRenderProblem; } set { this.lastRenderProblem = value; } }
+        public uint Frame { get { return frame; } set { this.frame = value; } }
+        public int Width { get { return underlyingControl.GraphicsWidth; } }
+        public int Height { get { return underlyingControl.GraphicsHeight; } }
+        public bool HasMouseInside { get { return underlyingControl.HasMouseInside; } }
 
         /// <summary>
         /// Property to access the main pixelbuffer
@@ -55,7 +58,7 @@ namespace DirectVarmint
         {
             get
             {
-                if (mainBuffer == null) mainBuffer = CreatePixelBuffer(false);
+                if (mainBuffer == null) mainBuffer = CreatePixelBuffer();
                 return mainBuffer;
             }
         }
@@ -72,32 +75,58 @@ namespace DirectVarmint
         {
             get
             {
-                if (overlayBuffer == null) overlayBuffer = CreatePixelBuffer(true);
+                if (overlayBuffer == null) overlayBuffer = CreatePixelBuffer();
                 return overlayBuffer;
             }
         }
 
-        HiPerfTimer renderTimer = new HiPerfTimer();
-        public double renderMilliseconds = 0;
 
         /// --------------------------------------------------------------------------
         /// <summary>
         /// Constructor.  Use DVTools.CreateDVWindow to construct this object.
         /// </summary>
         /// --------------------------------------------------------------------------
-        internal DVWindow(IntPtr ownerHandle, RenderMethod renderMethod)
+        internal DVWindow(Control owner, RenderMethod renderMethod)
         {
-            this.owner = ownerHandle;
-            this.ownerControl = Control.FromHandle(ownerHandle);
-
-            this.renderMethod = renderMethod;
-
-            device = new Device();
-            device.SetCooperativeLevel(ownerControl, CooperativeLevelFlags.Normal);
-
-            OnResetDevice(device, null);
+            Init(owner, renderMethod, owner.Width, owner.Height);
         }
 
+        /// --------------------------------------------------------------------------
+        /// <summary>
+        /// Constructor.  Use DVTools.CreateDVWindow to construct this object.
+        /// </summary>
+        /// --------------------------------------------------------------------------
+        internal DVWindow(Control owner, RenderMethod renderMethod, int width, int height)
+        {
+            Init(owner, renderMethod, width, height);
+        }
+
+        /// --------------------------------------------------------------------------
+        /// <summary>
+        /// Initialize this window
+        /// </summary>
+        /// --------------------------------------------------------------------------
+        private void Init(Control owner, RenderMethod renderMethod, int width, int height)
+        {
+            if (width <= 0) width = owner.Width;
+            if (height <= 0) height = owner.Height;
+            underlyingControl = new DirectVarmintControl(width, height);
+            underlyingControl.Dock = DockStyle.Fill;
+            underlyingControl.Width = owner.Width;
+            underlyingControl.Height = owner.Height;
+
+            owner.SuspendLayout();
+            owner.Controls.Add(underlyingControl);
+            owner.ResumeLayout(false);
+
+
+            this.owner = owner.Handle;
+            this.ownerControl = owner;
+
+            this.renderMethod = renderMethod;
+        }
+
+        
         /// --------------------------------------------------------------------------
         /// <summary>
         /// Renders the windows
@@ -105,26 +134,91 @@ namespace DirectVarmint
         /// --------------------------------------------------------------------------
         public void Render()
         {
+            
             renderFrame++;
             if (closed) return;
 
-            renderTimer.Start();
 
             if (renderMethod != null) renderMethod();            
-            if (device.Disposed || closed) return;
 
+            renderTimer.Start();
             RECT location;
             User32.GetWindowRect(owner, out location);
-            int ownerWidth = location.right - location.left;
-            int ownerHeight = location.bottom - location.top;
-            
-            if (mainBuffer != null) mainBuffer.Render(surfaceSecondary, location.left, location.top, ownerWidth, ownerHeight);
-            if (device.Disposed || closed) return;
-            
-            if (overlayBuffer != null) overlayBuffer.Render(surfaceSecondary, location.left, location.top, ownerWidth, ownerHeight);
-            if (device.Disposed || closed) return;
 
-            Flip();
+            LastRenderProblem = null;
+
+            // Dump the PixelBuffers into the drawing surface
+            try
+            {
+                int[] rgbBuffer = underlyingControl.RgbBuffer;
+
+                //////////////////////////
+                // RENDER MAIN BUFFER
+                //////////////////////////
+                if (mainBuffer != null)
+                {
+                    ushort[] sourceBuffer = mainBuffer.RawBuffer;
+                    int i = 0;
+                    int end = sourceBuffer.Length - 4;
+
+
+                    while (i < end)
+                    {
+                        rgbBuffer[i] = (int)palette[sourceBuffer[i]];
+                        rgbBuffer[i + 1] = (int)palette[sourceBuffer[i + 1]];
+                        rgbBuffer[i + 2] = (int)palette[sourceBuffer[i + 2]];
+                        rgbBuffer[i + 3] = (int)palette[sourceBuffer[i + 3]];
+                        i += 4;
+                    }
+
+                    //// catch straglers
+                    while (i < sourceBuffer.Length)
+                    {
+                        rgbBuffer[i] = (int)palette[sourceBuffer[i]];
+                        i++;
+                    }
+
+                }
+
+                /////////////////////////////
+                //  RENDER OVERLAY BUFFER
+                // (Index 0 is transparent)
+                /////////////////////////////
+                if (overlayBuffer != null)
+                {
+                    ushort[] sourceBuffer = overlayBuffer.RawBuffer;
+                    int i = 0;
+                    int end = sourceBuffer.Length - 4;
+
+                    while (i < end)
+                    {
+                        if (sourceBuffer[i] > 0) rgbBuffer[i] = (int)palette[sourceBuffer[i]];
+                        if (sourceBuffer[i + 1] > 0) rgbBuffer[i + 1] = (int)palette[sourceBuffer[i + 1]];
+                        if (sourceBuffer[i + 2] > 0) rgbBuffer[i + 2] = (int)palette[sourceBuffer[i + 2]];
+                        if (sourceBuffer[i + 3] > 0) rgbBuffer[i + 3] = (int)palette[sourceBuffer[i + 3]];
+                        i += 4;
+                    }
+                    //// catch straglers
+                    while (i < sourceBuffer.Length)
+                    {
+                        if (sourceBuffer[i] > 0) rgbBuffer[i] = (int)palette[sourceBuffer[i]];
+                        i++;
+                    }
+                }
+
+                underlyingControl.UpdateBits();
+                underlyingControl.Invalidate();
+            }
+            catch (Exception e)
+            {
+                LastRenderProblem = e.ToString();
+                Debug.WriteLine(e.ToString());
+            }
+            finally
+            {
+            }
+
+            frame++;
             renderMilliseconds = renderTimer.ElapsedSeconds * 1000;
         }
 
@@ -140,85 +234,16 @@ namespace DirectVarmint
 
         /// --------------------------------------------------------------------------
         /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// --------------------------------------------------------------------------
-        internal void OnResetDevice(object sender, EventArgs e)
-        {
-            Device graphicsDevice = (Device)sender;
-
-            // Every surface needs a description
-            // This is where you set the parameters for the surface
-            SurfaceDescription desc = new SurfaceDescription();
-            desc.SurfaceCaps.PrimarySurface = true;
-
-            // Create the surface
-            surfacePrimary = new Surface(desc, graphicsDevice);
-
-            graphicsClipper = new Clipper(device);
-            graphicsClipper.Window = ownerControl;
-            surfacePrimary.Clipper = this.graphicsClipper;
-
-            desc.Clear();
-            desc.Width = surfacePrimary.SurfaceDescription.Width;
-            desc.Height = surfacePrimary.SurfaceDescription.Height;
-            desc.SurfaceCaps.OffScreenPlain = true;
-            surfaceSecondary = new Surface(desc, graphicsDevice);
-
-            //// Reset the pixelbuffers
-            if (mainBuffer != null) mainBuffer = CreatePixelBuffer(false);
-            if (overlayBuffer != null) overlayBuffer = CreatePixelBuffer(true);
-
-            windowWasReset = true;
-        }
-
-        /// <summary>
-        /// This method flips the secondary surface to the
-        /// primary one, thus drawing its content to the screen.
-        /// </summary>
-        public void Flip()
-        {
-            if (surfacePrimary == null || surfaceSecondary == null) return;
-
-            try
-            {
-                surfacePrimary.Draw(surfaceSecondary, DrawFlags.Wait);
-            }
-            catch (SurfaceLostException)
-            {
-                surfacePrimary.Restore();
-                surfaceSecondary.Restore();
-            }
-            catch (ArgumentException e)
-            {
-                if (e.Message != "Value does not fall within the expected range.") throw;
-            }
-            catch (GraphicsException) { } // Ignore
-        } 
-
-        /// --------------------------------------------------------------------------
-        /// <summary>
         /// Create a pixelbuffer
         /// </summary>
         /// --------------------------------------------------------------------------
-        private PixelBuffer CreatePixelBuffer(bool overlay)
+        private PixelBuffer CreatePixelBuffer()
         {
-            int pixelWidth = bufferWidth;
-            int pixelHeight = bufferHeight;
-
             RECT clientRectangle;
-            User32.GetWindowRect(this.owner, out clientRectangle);
-            int ownerWidth = clientRectangle.right - clientRectangle.left;
-            int ownerHeight = clientRectangle.bottom - clientRectangle.top;
-
-            if (pixelWidth == -1) pixelWidth = ownerWidth;
-            if (pixelHeight == -1) pixelHeight = ownerHeight;
 
             if (this.palette == null)
             {
-                this.palette = new uint[0x8000];
+                this.palette = new uint[0x10000];
             }
 
             // Generate a 5 bit rgb palette
@@ -241,18 +266,18 @@ namespace DirectVarmint
                     }
                 }
             }
-            palette[0] = 0x00000000; //3D applications require ff000000
+            palette[0] = 0x00000000;
+
+            DVTools.FixPalette(palette);
 
             PixelBuffer newBuffer = new PixelBuffer(
-                this.device,
-                pixelWidth,
-                pixelHeight,
-                ownerWidth,
-                ownerHeight,
-                palette,
-                overlay);
+                Width,
+                Height,
+                Width,
+                palette);
 
             return newBuffer;
         }
+
     }
 }

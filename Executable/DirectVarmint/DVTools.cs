@@ -6,6 +6,8 @@ using System.Threading;
 using DirectVarmint;
 using System.IO;
 using System.Reflection;
+using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
 
 namespace DirectVarmint
 {
@@ -21,6 +23,7 @@ namespace DirectVarmint
         static List<SoundPlayer> players = new List<SoundPlayer>();
         public static double ActualFramesPerSecond = 0;
 
+        static bool firstCallToDrive = true;
         /// --------------------------------------------------------------------------
         /// <summary>
         /// Drive a windows form that uses DirectVarmint functionality
@@ -36,10 +39,18 @@ namespace DirectVarmint
             int frame = 0;
             DateTime frameTime = DateTime.Now;
 
+            if (firstCallToDrive && windows.Count == 0)
+            {
+                firstCallToDrive = false;
+                throw new ApplicationException("There are no DVWindows defined.  Make sure your form has created a DVWindow before calling DriveApplication().");
+            }
+
             List<DVWindow> deadWindows = new List<DVWindow>();
+
 
             while (windows.Count > 0)
             {
+
                 if(frame % framesPerSecond == 0)
                 {
                     TimeSpan span = DateTime.Now - frameTime; 
@@ -109,9 +120,9 @@ namespace DirectVarmint
         /// rendered between the main buffer and the overlay buffer</param>
         /// <returns></returns>
         /// --------------------------------------------------------------------------
-        public static DVWindow CreateDVWindow(IntPtr windowsControl, RenderMethod renderMethod)
+        public static DVWindow CreateDVWindow(Control control, RenderMethod renderMethod)
         {
-            return CreateDVWindow(windowsControl, renderMethod, PixelBuffer.DEFAULTWIDTH, PixelBuffer.DEFAULTHEIGHT);
+            return CreateDVWindow(control, renderMethod, PixelBuffer.DEFAULTWIDTH, PixelBuffer.DEFAULTHEIGHT);
         }
 
         /// --------------------------------------------------------------------------
@@ -122,12 +133,9 @@ namespace DirectVarmint
         /// <param name="renderMethod">This method is called every frame from DriveApplication()</param>
         /// <returns></returns>
         /// --------------------------------------------------------------------------
-        public static DVWindow CreateDVWindow(IntPtr windowHandle, RenderMethod renderMethod, int pixelBufferWidth, int pixelBufferHeight)
+        public static DVWindow CreateDVWindow(Control control, RenderMethod renderMethod, int pixelBufferWidth, int pixelBufferHeight)
         {
-            DVWindow newWindow = new DVWindow(windowHandle, renderMethod);
-            newWindow.bufferHeight = pixelBufferHeight;
-            newWindow.bufferWidth = pixelBufferWidth;
-
+            DVWindow newWindow = new DVWindow(control, renderMethod, pixelBufferWidth, pixelBufferHeight);
             windows.Add(newWindow);
             return newWindow;
         }
@@ -155,7 +163,7 @@ namespace DirectVarmint
         {
             Stream stream = null;
 
-            if (File.Exists(fileOrResourceName)) stream = new FileStream(fileOrResourceName, FileMode.Open);
+            if (File.Exists(fileOrResourceName)) stream = File.OpenRead(fileOrResourceName);
             else stream = Assembly.GetEntryAssembly().GetManifestResourceStream(fileOrResourceName);
 
             if (stream == null) throw new ApplicationException("Cannot find file or resource: " + fileOrResourceName);
@@ -170,7 +178,7 @@ namespace DirectVarmint
         /// <param name="fileOrResourceName">Filename or full resource name (namespace.resourcename)</param>
         /// <returns>A stream handle to the data</returns>
         /// --------------------------------------------------------------------------
-        public static void FixPalette(uint[] palette)
+        public  static void FixPalette(uint[] palette)
         {
             unchecked
             {

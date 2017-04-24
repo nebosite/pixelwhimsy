@@ -706,7 +706,7 @@ namespace DirectVarmint
             /// --------------------------------------------------------------------------
             public static ushort _5Bit(uint realColor)
             {
-                return (ushort)(
+                return (ushort)( 
                         ((realColor & 0xF80000) >> 9) +
                         ((realColor & 0xF800) >> 6) +
                         ((realColor & 0xF8) >> 3));

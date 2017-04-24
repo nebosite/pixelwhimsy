@@ -30,8 +30,8 @@ using System.Globalization;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.3.0.0006")]
-[assembly: AssemblyFileVersion("1.3.0.0006")]
+[assembly: AssemblyVersion("1.3.0.0009")]
+[assembly: AssemblyFileVersion("1.3.0.0009")]
 
 /// --------------------------------------------------------------------------
 /// <summary>
@@ -40,7 +40,7 @@ using System.Globalization;
 /// --------------------------------------------------------------------------
 public static class AssemblyConstants
 {
-    public static DateTime expirationDate = DateTime.Parse("2/22/2011 4:39:23 PM",
+    public static DateTime expirationDate = DateTime.Parse("6/7/2017 6:39:09 PM",
         new CultureInfo("en-US"));
     public static string Version;
     public static string Guid = "8d54704b-2fdb-4735-a9f5-3cec5e04e966";
