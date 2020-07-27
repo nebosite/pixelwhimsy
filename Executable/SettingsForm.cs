@@ -61,7 +61,7 @@ namespace PixelWhimsy
             checkBoxShowSettings.Checked = Settings.ShowSettings;
             trackBarVolume.Value = (int)(Settings.Volume * 100);
 
-            soundPlayer = new SoundPlayer(this);
+            soundPlayer = new DirectVarmint.SoundPlayer(this);
             soundPlayer.MasterVolume = Settings.Volume;
         }
 

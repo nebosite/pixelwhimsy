@@ -434,16 +434,17 @@ using Microsoft.Xna.Framework.Audio;
         public static GraphicsDeviceService AddRef(IntPtr windowHandle,
                                                    int width, int height)
         {
-            // Increment the "how many controls sharing the device" reference count.
-            if (Interlocked.Increment(ref referenceCount) == 1)
-            {
-                // If this is the first control to start using the
-                // device, we must create the singleton instance.
-                singletonInstance = new GraphicsDeviceService(windowHandle,
-                                                              width, height);
-            }
+            return new GraphicsDeviceService(windowHandle, width, height);
+            //// Increment the "how many controls sharing the device" reference count.
+            //if (Interlocked.Increment(ref referenceCount) == 1)
+            //{
+            //    // If this is the first control to start using the
+            //    // device, we must create the singleton instance.
+            //    singletonInstance = new GraphicsDeviceService(windowHandle,
+            //                                                  width, height);
+            //}
 
-            return singletonInstance;
+            //return singletonInstance;
         }
 
 

@@ -348,6 +348,6 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>$(ProjectDir)\VersionUpdater.exe $(ProjectDir)\properties\assemblyinfo.cs 45 &amp; copy $(ProjectDir)\$(OutDir)\PixelWhimsy.exe $(ProjectDir)\$(OutDir)\PixelWhimsy.scr</PostBuildEvent>
+    <PostBuildEvent>copy $(ProjectDir)\$(OutDir)\PixelWhimsy.exe $(ProjectDir)\$(OutDir)\PixelWhimsy.scr</PostBuildEvent>
   </PropertyGroup>
 </Project>

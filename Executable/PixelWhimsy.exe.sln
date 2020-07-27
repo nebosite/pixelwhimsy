@@ -1,11 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelWhimsy", "PixelWhimsy.csproj", "{EDBC9F6D-6A18-45F1-A520-C17D40382B5E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectVarmint", "DirectVarmint\DirectVarmint.csproj", "{5BB0FC17-DB8B-4ED5-9F47-3C690EC3515C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{D6310317-F5A7-441C-A8A2-9FF164F5E692}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.txt = Readme.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,8 +36,8 @@ Global
 		{5BB0FC17-DB8B-4ED5-9F47-3C690EC3515C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BB0FC17-DB8B-4ED5-9F47-3C690EC3515C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{5BB0FC17-DB8B-4ED5-9F47-3C690EC3515C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{5BB0FC17-DB8B-4ED5-9F47-3C690EC3515C}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{5BB0FC17-DB8B-4ED5-9F47-3C690EC3515C}.Debug|x86.Build.0 = Debug|Any CPU
+		{5BB0FC17-DB8B-4ED5-9F47-3C690EC3515C}.Debug|x86.ActiveCfg = Debug|x86
+		{5BB0FC17-DB8B-4ED5-9F47-3C690EC3515C}.Debug|x86.Build.0 = Debug|x86
 		{5BB0FC17-DB8B-4ED5-9F47-3C690EC3515C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BB0FC17-DB8B-4ED5-9F47-3C690EC3515C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5BB0FC17-DB8B-4ED5-9F47-3C690EC3515C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
